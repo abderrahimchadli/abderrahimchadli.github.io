@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://abderrahimchadli.github.io/sitemap.xml
