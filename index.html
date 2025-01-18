@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abderrahim Chadli - Senior Full Stack Developer specializing in Python, Django, .NET, and modern web technologies. Expert in building scalable web applications with 7+ years of experience.">
+  <meta name="keywords" content="Abderrahim Chadli, Full Stack Developer, Python Developer, Django Expert, .NET Developer, Web Development, Automation Expert">
+  <meta property="og:title" content="Abderrahim Chadli - Senior Full Stack Developer">
+  <meta property="og:description" content="Expert Full Stack Developer specializing in Python, Django, .NET, and modern web technologies with proven experience in delivering scalable applications.">
+  <meta property="og:image" content="https://i.imgur.com/TT2M7em.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Abderrahim Chadli">
+  <title>Abderrahim Chadli |  Full Stack Developer - Python, Django & .NET Expert</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #34d399;
+      --primary-dark: #059669;
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --text-light: #f1f5f9;
+      --text-gray: #94a3b8;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      color: var(--primary-dark);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 4rem;
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+      align-items: center;
+      min-height: 90vh;
+    }
+
+    .hero-content {
+      animation: fadeIn 1s ease-out;
+    }
+
+    .hero-image {
+      position: relative;
+      animation: slideIn 1s ease-out;
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-image img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: -1rem;
+      border: 2px solid var(--primary);
+      border-radius: 1.5rem;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      margin-bottom: 2rem;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* Experience Cards */
+    .experience-card {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .experience-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .experience-card .period {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .experience-card ul {
+      list-style-type: none;
+    }
+
+    .experience-card li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .experience-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: 1rem;
+      transition: var(--transition);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .skill-card ul {
+      list-style-type: none;
+    }
+
+    .skill-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tech-tag {
+      background: rgba(52, 211, 153, 0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: var(--bg-dark);
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-card);
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 6rem 0 3rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .hero-image img {
+        width: 300px;
+        height: 300px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-image img {
+        width: 250px;
+        height: 250px;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KTK4N4NX');</script>
+  <!-- End Google Tag Manager -->
+
+  <header>
+    <div class="container header-content">
+      <a href="#" class="logo">AC</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="about">
+      <div class="hero-content">
+        <h1>Full Stack Developer</h1>
+        <p>Dedicated full-stack developer with 7+ years of experience specializing in Python, Django, .NET, and modern web technologies. Expert in building scalable applications and automated systems that drive business growth and efficiency.</p>
+        <a href="#contact" class="btn">Get in touch</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://i.imgur.com/TT2M7em.jpeg" alt="Abderrahim Chadli - Full Stack Developer">
+      </div>
+    </section>
+
+    <section id="experience" class="section container">
+      <h2 class="section-title">Professional Experience</h2>
+      
+      <div class="experience-card">
+        <h3>Full Stack Developer Freelancer</h3>
+        <div class="period">January 2017 – Present</div>
+        <ul>
+          <li>Developed and deployed 20+ custom web applications using Django, ASP.NET, and modern JavaScript</li>
+          <li>Implemented secure payment processing systems handling $500K+ in transactions</li>
+          <li>Created automated email marketing solutions improving client engagement by 40%</li>
+          <li>Optimized database performance reducing query times by 60%</li>
+          <li>Integrated third-party APIs including Stripe, AWS, and social media platforms</li>
+          <li>Mentored junior developers and provided technical consultation to clients</li>
+        </ul>
+      </div>
+
+      <div class="experience-card">
+        <h3>Director at DIGITAL DIVE LTD</h3>
+        <div class="period">May 2020 – May 2021</div>
+        <ul>
+          <li>Led a team of 5 developers in delivering e-commerce solutions</li>
+          <li>Managed project timelines and client relationships for 10+ major projects</li>
+          <li>Implemented agile methodologies improving project delivery time by 30%</li>
+          <li>Established code review processes and development standards</li>
+          <li>Conducted technical interviews and hired key team members</li>
+        </ul>
+      </div>
+
+      <div class="experience-card">
+        <h3>Mailer Agent at Epower/Econsultansy</h3>
+        <div class="period">October 2015 – December 2016</div>
+        <ul>
+          <li>Developed Python scripts automating email delivery for 100K+ recipients</li>
+          <li>Improved email deliverability rates by 25% through server optimization</li>
+          <li>Created monitoring tools for tracking email campaign performance</li>
+          <li>Implemented anti-spam measures and security protocols</li>
+          <li>Collaborated with marketing team to optimize campaign effectiveness</li>
+        </ul>
+      </div>
+    </section>
+
+<section id="skills" class="section container">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Backend Development</h3>
+          <p>Expert in server-side development with a focus on scalable architectures and API design.</p>
+          <ul>
+            <li>Python (Django, FastAPI, Flask)</li>
+            <li>C# (.NET Core, ASP.NET)</li>
+            <li>RESTful APIs</li>
+            <li>PostgreSQL, SQL Server</li>
+            <li>C++ (Core fundamentals)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Frontend Development</h3>
+          <p>Proficient in modern frontend technologies and responsive design principles.</p>
+          <ul>
+            <li>HTML5 & CSS3</li>
+            <li>JavaScript & jQuery</li>
+            <li>Bootstrap & Responsive Design</li>
+            <li>SASS/SCSS</li>
+            <li>Modern CSS Frameworks</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Development Tools</h3>
+          <p>Experienced with modern development tools and practices.</p>
+          <ul>
+            <li>Git & Version Control</li>
+            <li>Docker Containers</li>
+            <li>CI/CD Pipelines</li>
+            <li>Agile Methodologies</li>
+            <li>Testing & Debugging</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Database & Storage</h3>
+          <p>Proficient in database design and optimization.</p>
+          <ul>
+            <li>PostgreSQL & MySQL</li>
+            <li>SQL Server</li>
+            <li>Database Optimization</li>
+            <li>Data Modeling</li>
+            <li>Query Performance Tuning</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Testing & Automation</h3>
+          <p>Expert in automated testing and quality assurance.</p>
+          <ul>
+            <li>Selenium WebDriver</li>
+            <li>Unit Testing</li>
+            <li>Integration Testing</li>
+            <li>Test Automation</li>
+            <li>Performance Testing</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Project Management</h3>
+          <p>Experienced in leading teams and managing development projects.</p>
+          <ul>
+            <li>Agile Methodologies</li>
+            <li>Team Leadership</li>
+            <li>Technical Planning</li>
+            <li>Risk Management</li>
+            <li>Stakeholder Communication</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-content">
+            <h3>Property Management System</h3>
+            <p>Comprehensive real estate management platform with features for tenant management, maintenance tracking, and financial reporting.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">AWS</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Egaokira/property_management" target="_blank" class="btn">View Project</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-content">
+            <h3>Digital Product Download</h3>
+            <p>Shopify application for secure digital product delivery with license key management and automated email delivery system.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Shopify API</span>
+              <span class="tech-tag">AWS S3</span>
+              <span class="tech-tag">Redis</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Egaokira/DigitalProductDownload" target="_blank" class="btn">View Project</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-content">
+            <h3>Product Copy Manager</h3>
+            <p>An automation tool for product management and content synchronization across platforms.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">Celery</span>
+              <span class="tech-tag">Redis</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Egaokira/copyproducts" target="_blank"  class="btn">View Project</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-content">
+            <h3>IP Blocker</h3>
+            <p>A security solution to manage and block unwanted network traffic with configurable rules for blocking IP addresses.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">iptables</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Egaokira/ipblocker" target="_blank" class="btn">View Project</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-content">
+            <h3>Gmail Send Auto</h3>
+            <p>Email automation script leveraging the Gmail API for bulk communication and scheduling.</p>
+            <div class="tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Gmail API</span>
+              <span class="tech-tag">Google Cloud</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Egaokira/Gmail-Send-Auto" target="_blank" class="btn">View Project</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+<section id="contact" class="section container">
+  <h2 class="section-title">Let's Work Together</h2>
+  <div class="contact-section">
+    <p>Looking for a developer who can bring your ideas to life? I'm currently available for freelance projects and full-time opportunities.</p>
+    <p>Whether you need a custom web application, automation solution, or technical consultation, I'm here to help.</p>
+    
+    <!-- FormSubmit will send emails to the address specified in the action URL -->
+<form action="https://formsubmit.co/egaokira@gmail.com" method="POST" class="contact-form" style="max-width: 600px; margin: 2rem auto; text-align: left;">
+  <!-- FormSubmit Configuration -->
+  <input type="hidden" name="_subject" value="New Portfolio Contact!">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://egaokira.github.io/portfolio/thank-you.html">
+  <input type="hidden" name="_captcha" value="true">
+
+  <div class="form-group" style="margin-bottom: 1.5rem;">
+    <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--text-light);">Name</label>
+    <input type="text" id="name" name="name" required 
+           style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; 
+                  background: var(--bg-card); border: 1px solid var(--text-gray);
+                  color: var(--text-light); outline: none; transition: var(--transition);"
+           placeholder="Your name">
+  </div>
+
+  <div class="form-group" style="margin-bottom: 1.5rem;">
+    <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--text-light);">Email</label>
+    <input type="email" id="email" name="email" required 
+           style="width: 100%; padding: 0.75rem; border-radius: 0.5rem;
+                  background: var(--bg-card); border: 1px solid var(--text-gray);
+                  color: var(--text-light); outline: none; transition: var(--transition);"
+           placeholder="Your email">
+  </div>
+
+  <div class="form-group" style="margin-bottom: 1.5rem;">
+    <label for="message" style="display: block; margin-bottom: 0.5rem; color: var(--text-light);">Message</label>
+    <textarea id="message" name="message" required rows="5" 
+              style="width: 100%; padding: 0.75rem; border-radius: 0.5rem;
+                     background: var(--bg-card); border: 1px solid var(--text-gray);
+                     color: var(--text-light); outline: none; transition: var(--transition);
+                     resize: vertical;"
+              placeholder="Your message"></textarea>
+  </div>
+
+  <button type="submit" class="btn" style="width: 100%; cursor: pointer;">Send Message</button>
+</form>
+
+
+    <div class="contact-links" style="margin-top: 2rem;">
+      <a href="https://github.com/Egaokira" class="btn" target="_blank" style="margin-left: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary);">GitHub Profile</a>
+      <a href="https://www.linkedin.com/in/abderrahimchadli/" target="_blank" class="btn" style="margin-left: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary);">LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Add these styles to your existing CSS */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: var(--primary);
+}
+
+.form-group label {
+  font-weight: 500;
+}
+
+.contact-form button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+</style>  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 Abderrahim Chadli. All rights reserved.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-gray);">Full Stack Developer</p>
+    </div>
+  </footer>
+
+  <!-- Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9PLKKR8B5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9PLKKR8B5S');
+</script></body>
+</html>
