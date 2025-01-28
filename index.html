@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <meta name="google-site-verification" content="ckD8S1QTC8Tbms588ruuZOCKcoVgpSE3YCFORmRtDuk" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --primary: #34d399;
@@ -76,6 +77,7 @@
       color: var(--primary-dark);
     }
 
+    /* Navigation Styles (Desktop) */
     nav {
       display: flex;
       gap: 2rem;
@@ -103,6 +105,51 @@
     nav a:hover::after {
       width: 100%;
     }
+
+    /* Mobile Menu Styles */
+    .menu-toggle {
+        display: none; /* Hidden by default */
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--text-light);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 65px; /* Adjusted to the header height */
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-dark);
+      padding: 1rem;
+      z-index: 999; /* Ensure it's above other content */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  
+      .mobile-nav.open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+      .mobile-nav a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        text-align: center;
+        transition: var(--transition);
+    }
+
+      .mobile-nav a:last-child {
+          border-bottom: none;
+      }
+
+        .mobile-nav a:hover {
+          background-color: var(--bg-card);
+        }
 
     /* Hero Section */
     .hero {
@@ -342,10 +389,15 @@
         height: 300px;
       }
 
+      /* Hide Desktop Nav and Show Mobile Menu Toggle */
       nav {
         display: none;
       }
 
+      .menu-toggle {
+        display: block;
+      }
+        
       .skills-grid {
         grid-template-columns: 1fr;
       }
@@ -386,7 +438,19 @@
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
+      <!-- Mobile Menu Toggle -->
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
+      <!-- Mobile Navigation -->
+      <div class="mobile-nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
   </header>
 
   <main>
@@ -694,5 +758,14 @@
   gtag('js', new Date());
 
   gtag('config', 'G-9PLKKR8B5S');
-</script></body>
+</script>
+ <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    menuToggle.addEventListener('click', () => {
+        mobileNav.classList.toggle('open');
+    });
+</script>
+</body>
 </html>
