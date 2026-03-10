@@ -1,771 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Abderrahim Chadli - Senior Full Stack Developer specializing in Python, Django, .NET, and modern web technologies. Expert in building scalable web applications with 7+ years of experience.">
-  <meta name="keywords" content="Abderrahim Chadli, Full Stack Developer, Python Developer, Django Expert, .NET Developer, Web Development, Automation Expert">
-  <meta property="og:title" content="Abderrahim Chadli - Senior Full Stack Developer">
-  <meta property="og:description" content="Expert Full Stack Developer specializing in Python, Django, .NET, and modern web technologies with proven experience in delivering scalable applications.">
-  <meta property="og:image" content="https://i.imgur.com/TT2M7em.jpeg">
-  <meta property="og:type" content="website">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Abderrahim Chadli">
-  <title>Abderrahim Chadli |  Full Stack Developer - Python, Django & .NET Expert</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <meta name="google-site-verification" content="ckD8S1QTC8Tbms588ruuZOCKcoVgpSE3YCFORmRtDuk" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    :root {
-      --primary: #34d399;
-      --primary-dark: #059669;
-      --bg-dark: #0f172a;
-      --bg-card: #1e293b;
-      --text-light: #f1f5f9;
-      --text-gray: #94a3b8;
-      --transition: all 0.3s ease;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abderrahim Chadli — AI Video & Web Apps</title>
+<meta name="description" content="AI Video Creator & Web Developer from Tangier, Morocco.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060608;--ink:#0E0E12;--surface:#14141A;--edge:#1E1E28;--line:rgba(255,255,255,0.07);--gold:#E8A020;--gold-dim:rgba(232,160,32,0.15);--cyan:#00CFCF;--cyan-dim:rgba(0,207,207,0.12);--white:#F0EDE8;--grey:rgba(240,237,232,0.5);--ghost:rgba(240,237,232,0.15);--f-d:'Bebas Neue',sans-serif;--f-s:'DM Serif Display',serif;--f-m:'IBM Plex Mono',monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--f-s);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:.6}
+::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gold)}
+a{text-decoration:none;color:inherit}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+/* CURSOR */
+#dot{width:5px;height:5px;border-radius:50%;background:var(--gold);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:background .3s}
+#ring{width:28px;height:28px;border:1px solid rgba(232,160,32,.5);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:border-color .3s}
+body.cyan-mode #dot{background:var(--cyan)}
+body.cyan-mode #ring{border-color:rgba(0,207,207,.5)}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      line-height: 1.7;
-    }
+/* KEYFRAMES */
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes drift{0%,100%{transform:translate(0,0)}40%{transform:translate(18px,-14px)}70%{transform:translate(-12px,10px)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scanH{from{top:-4px}to{top:100vh}}
+@keyframes recblink{0%,100%{opacity:1}40%,60%{opacity:0}}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}.d4{transition-delay:.46s}
 
-    /* Header Styles */
-    header {
-      background-color: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.2rem 6vw;display:flex;justify-content:space-between;align-items:center;background:rgba(6,6,8,.88);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
+.nl{font-family:var(--f-m);font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}.nl span{color:var(--gold)}
+.nlinks{display:flex;gap:2.5rem;list-style:none}
+.nlinks a{font-family:var(--f-m);font-size:.57rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ghost);transition:color .3s}
+.nlinks a:hover{color:var(--gold)}
+.nhire{font-family:var(--f-m);font-size:.57rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:.45rem 1.3rem;transition:all .3s}
+.nhire:hover{background:var(--white);transform:translateY(-1px)}
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6vw 8vh;position:relative;overflow:hidden}
+.hblob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.hb1{width:700px;height:700px;background:radial-gradient(circle,rgba(232,160,32,.07),transparent 70%);top:-15%;right:-10%;animation:drift 18s ease infinite}
+.hb2{width:500px;height:500px;background:radial-gradient(circle,rgba(0,207,207,.05),transparent 70%);bottom:5%;left:-5%;animation:drift 22s ease infinite reverse}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 80%)}
+.hscan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(232,160,32,.12),transparent);animation:scanH 10s linear infinite;pointer-events:none}
+.htop{position:absolute;top:0;left:0;right:0;padding:6.5rem 6vw 0;display:flex;justify-content:space-between;align-items:flex-start;z-index:2}
+.htag{font-family:var(--f-m);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.6rem}
+.htag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.6s ease infinite}
+.hloc{font-family:var(--f-m);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ghost)}
+.hcontent{position:relative;z-index:2}
+.hpre{font-family:var(--f-m);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost);margin-bottom:.6rem;animation:up .6s ease .1s both}
+.hname{font-family:var(--f-d);font-size:clamp(5rem,13vw,14rem);line-height:.9;letter-spacing:-.01em;animation:up .7s ease .2s both}
+.hname .ol{-webkit-text-stroke:1.5px var(--gold);color:transparent}
+.hsub{display:flex;align-items:center;gap:3rem;margin-top:2.5rem;animation:up .7s ease .4s both}
+.hrole{font-size:clamp(1rem,2vw,1.5rem);font-style:italic;color:var(--grey);line-height:1.5;max-width:500px}
+.hrole strong{color:var(--white);font-style:normal}
+.hstats{display:flex;gap:3rem;margin-left:auto}
+.hsi .n{font-family:var(--f-d);font-size:2.8rem;line-height:1;color:var(--gold)}
+.hsi .l{font-family:var(--f-m);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ghost)}
+.hdiv{height:1px;background:var(--line);margin:2.5rem 0;animation:up .5s ease .6s both}
+.hscroll{position:relative;z-index:2;display:flex;align-items:center;gap:1rem;animation:up .5s ease .7s both}
+.hscroll-line{width:40px;height:1px;background:var(--gold)}
+.hscroll-t{font-family:var(--f-m);font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost)}
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
+/* TICKER */
+.ticker{overflow:hidden;background:var(--gold);padding:.55rem 0}
+.ttrack{display:flex;width:max-content;animation:marquee 20s linear infinite}
+.ti{font-family:var(--f-m);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);padding:0 2.5rem;white-space:nowrap}
+.ti::after{content:'✦';margin-left:2.5rem}
 
-    .logo:hover {
-      color: var(--primary-dark);
-    }
+/* SECTION */
+.sec{padding:8rem 6vw}
+.sec-ink{background:var(--ink)}
+.sec-bg{background:var(--bg)}
+.ey{font-family:var(--f-m);font-size:.57rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+.ey.g{color:var(--gold)}.ey.g::before{content:'';width:22px;height:1px;background:var(--gold)}
+.ey.c{color:var(--cyan)}.ey.c::before{content:'';width:22px;height:1px;background:var(--cyan)}
+.sh{font-family:var(--f-d);font-size:clamp(2.8rem,6vw,6.5rem);line-height:.95;letter-spacing:-.01em}
+.sh.g em{font-style:italic;font-family:var(--f-s);font-size:.75em;color:var(--gold)}
+.sh.c em{font-style:italic;font-family:var(--f-s);font-size:.75em;color:var(--cyan)}
+.sp{font-size:1.05rem;line-height:1.8;color:var(--grey);max-width:520px;margin-top:1.2rem}
 
-    /* Navigation Styles (Desktop) */
-    nav {
-      display: flex;
-      gap: 2rem;
-    }
+/* VIDEO HEAD */
+.vwh{display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;margin-bottom:3.5rem}
+.vfs{display:flex;gap:.4rem}
+.vfb{font-family:var(--f-m);font-size:.54rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid var(--edge);background:none;color:var(--ghost);cursor:pointer;transition:all .25s}
+.vfb.on,.vfb:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
 
-    nav a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-      position: relative;
-    }
+/* VIDEO GRID */
+.vgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.2rem}
+.vc{background:var(--ink);border:1px solid var(--edge);overflow:hidden;cursor:pointer;transition:transform .4s ease,border-color .4s,box-shadow .4s;position:relative}
+.vc:hover{transform:translateY(-6px);border-color:rgba(232,160,32,.4);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.c7{grid-column:span 7}.c5{grid-column:span 5}.c4{grid-column:span 4}.c8{grid-column:span 8}
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: var(--transition);
-    }
+/* PLAYER */
+.vp{position:relative;overflow:hidden}
+.c7 .vp,.c8 .vp{aspect-ratio:16/8}
+.c5 .vp,.c4 .vp{aspect-ratio:4/3}
 
-    nav a:hover::after {
-      width: 100%;
-    }
+/* SCENE */
+.vs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vs::before,.vs::after{content:'';position:absolute;left:0;right:0;height:10%;background:#000;z-index:4;pointer-events:none}
+.vs::before{top:0}.vs::after{bottom:0}
+.s1{background:linear-gradient(145deg,#180C00,#0F0800,#1A0E00)}
+.s2{background:linear-gradient(145deg,#00101A,#000C12,#001520)}
+.s3{background:linear-gradient(145deg,#12001C,#0A0010,#180018)}
+.s4{background:linear-gradient(145deg,#001208,#000E05,#001A0A)}
+.s5{background:linear-gradient(145deg,#000A18,#000612,#00081C)}
+.s6{background:linear-gradient(145deg,#10080C,#0C0508,#180A10)}
 
-    /* Mobile Menu Styles */
-    .menu-toggle {
-        display: none; /* Hidden by default */
-        cursor: pointer;
-        font-size: 1.5rem;
-        color: var(--text-light);
-    }
+.vb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(45px);animation:drift 10s ease infinite}
+.s1 .vb:nth-child(1){width:200px;height:200px;background:rgba(232,160,32,.22);top:10%;left:30%}
+.s1 .vb:nth-child(2){width:150px;height:150px;background:rgba(255,180,80,.13);bottom:15%;right:20%;animation-delay:-4s}
+.s2 .vb:nth-child(1){width:220px;height:220px;background:rgba(0,207,207,.18);top:5%;right:25%;animation-delay:-2s}
+.s2 .vb:nth-child(2){width:160px;height:160px;background:rgba(232,160,32,.11);bottom:20%;left:20%;animation-delay:-6s}
+.s3 .vb:nth-child(1){width:200px;height:200px;background:rgba(200,80,255,.2);top:20%;left:25%}
+.s3 .vb:nth-child(2){width:130px;height:130px;background:rgba(232,160,32,.13);bottom:10%;right:30%;animation-delay:-3s}
+.s4 .vb:nth-child(1){width:180px;height:180px;background:rgba(46,204,113,.2);top:15%;right:20%;animation-delay:-5s}
+.s4 .vb:nth-child(2){width:150px;height:150px;background:rgba(232,160,32,.11);bottom:15%;left:30%}
+.s5 .vb:nth-child(1){width:200px;height:200px;background:rgba(80,130,255,.2);top:10%;left:20%}
+.s5 .vb:nth-child(2){width:170px;height:170px;background:rgba(0,207,207,.13);bottom:10%;right:25%;animation-delay:-4s}
+.s6 .vb:nth-child(1){width:190px;height:190px;background:rgba(232,80,120,.18);top:15%;right:30%;animation-delay:-2s}
+.s6 .vb:nth-child(2){width:140px;height:140px;background:rgba(232,160,32,.13);bottom:20%;left:20%}
 
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 65px; /* Adjusted to the header height */
-      left: 0;
-      width: 100%;
-      background-color: var(--bg-dark);
-      padding: 1rem;
-      z-index: 999; /* Ensure it's above other content */
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-  
-      .mobile-nav.open {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.vcc{position:relative;z-index:5;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.vci{font-size:3rem;filter:drop-shadow(0 0 25px rgba(232,160,32,.6));animation:drift 7s ease infinite}
+.c7 .vci,.c8 .vci{font-size:4.5rem}
+.vcbadge{font-family:var(--f-m);font-size:.5rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(232,160,32,.9);background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.3);padding:.25rem .75rem;backdrop-filter:blur(4px)}
 
-      .mobile-nav a {
-        color: var(--text-light);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 1rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        width: 100%;
-        text-align: center;
-        transition: var(--transition);
-    }
+/* HUD */
+.vhud{position:absolute;top:.7rem;left:.7rem;right:.7rem;display:flex;justify-content:space-between;align-items:flex-start;z-index:10}
+.vrec{display:flex;align-items:center;gap:.35rem;font-family:var(--f-m);font-size:.47rem;letter-spacing:.12em;color:#FF4040;background:rgba(0,0,0,.65);border:1px solid rgba(255,64,64,.3);padding:.22rem .5rem;backdrop-filter:blur(4px)}
+.vrec::before{content:'';width:5px;height:5px;border-radius:50%;background:#FF4040;animation:recblink 1.2s ease infinite}
+.vplat{font-family:var(--f-m);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12);padding:.22rem .55rem;backdrop-filter:blur(4px)}
+.vts{font-family:var(--f-m);font-size:.46rem;color:rgba(255,255,255,.5);background:rgba(0,0,0,.5);padding:.2rem .48rem}
 
-      .mobile-nav a:last-child {
-          border-bottom: none;
-      }
+/* PLAY OVERLAY */
+.vpo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);opacity:0;transition:opacity .35s;z-index:8}
+.vc:hover .vpo{opacity:1}
+.vplay{width:54px;height:54px;border:2px solid rgba(232,160,32,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);transform:scale(.8);transition:transform .3s}
+.vc:hover .vplay{transform:scale(1)}
+.vplay svg{fill:var(--gold);margin-left:4px}
 
-        .mobile-nav a:hover {
-          background-color: var(--bg-card);
-        }
+/* PROGRESS */
+.vbw{position:absolute;bottom:2rem;left:.8rem;right:.8rem;z-index:9}
+.vbg{height:2px;background:rgba(255,255,255,.12);margin-bottom:.38rem}
+.vbf{height:100%;background:linear-gradient(90deg,var(--gold),#FFD080);position:relative;transition:none}
+.vc:hover .vbf{transition:width 8s linear}
+.vbf::after{content:'';position:absolute;right:-3px;top:50%;width:7px;height:7px;border-radius:50%;background:#FFD080;transform:translateY(-50%);box-shadow:0 0 6px rgba(232,160,32,.9)}
+.vtime{font-family:var(--f-m);font-size:.46rem;color:rgba(255,255,255,.6)}
+.vtime span{color:rgba(255,255,255,.3)}
 
-    /* Hero Section */
-    .hero {
-      padding: 8rem 0 4rem;
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 4rem;
-      align-items: center;
-      min-height: 90vh;
-    }
+/* CARD INFO */
+.vi{padding:1.1rem 1.3rem 1.4rem;border-top:1px solid var(--edge)}
+.vcat{font-family:var(--f-m);font-size:.49rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.vtit{font-size:1.1rem;line-height:1.25;margin-bottom:.35rem}
+.c7 .vtit,.c8 .vtit{font-size:1.35rem}
+.vmeta{font-family:var(--f-m);font-size:.47rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:.7rem}
+.vtools{display:flex;flex-wrap:wrap;gap:.35rem}
+.vtl{font-family:var(--f-m);font-size:.46rem;letter-spacing:.06em;padding:.18rem .5rem;border:1px solid rgba(232,160,32,.2);color:rgba(232,160,32,.6);transition:all .25s}
+.vc:hover .vtl{border-color:rgba(232,160,32,.5);color:var(--gold)}
 
-    .hero-content {
-      animation: fadeIn 1s ease-out;
-    }
+/* target widths on hover */
+.vc:hover .p45{width:45%!important}
+.vc:hover .p62{width:62%!important}
+.vc:hover .p28{width:28%!important}
+.vc:hover .p78{width:78%!important}
+.vc:hover .p51{width:51%!important}
+.vc:hover .p35{width:35%!important}
 
-    .hero-image {
-      position: relative;
-      animation: slideIn 1s ease-out;
-      text-align: center;
-      width: 100%;
-    }
+/* APP SECTION */
+.wwh{display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;margin-bottom:3.5rem}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.ac{background:var(--surface);border:1px solid var(--edge);overflow:hidden;transition:transform .4s,border-color .4s,box-shadow .4s;cursor:pointer;position:relative}
+.ac:hover{transform:translateY(-5px);border-color:rgba(0,207,207,.35);box-shadow:0 18px 55px rgba(0,0,0,.5)}
+.ac::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,207,207,.04),transparent);opacity:0;transition:opacity .4s;pointer-events:none}
+.ac:hover::after{opacity:1}
 
-    .hero-image img {
-      width: 400px;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 1rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      transition: var(--transition);
-    }
+/* BROWSER CHROME */
+.bch{background:var(--edge);padding:.55rem .8rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--line)}
+.bcd{display:flex;gap:.35rem}
+.bdd{width:8px;height:8px;border-radius:50%}
+.dr{background:#FF5F57}.dy{background:#FEBC2E}.dg{background:#28C840}
+.bbar{flex:1;background:rgba(255,255,255,.06);border-radius:2px;padding:.25rem .7rem;display:flex;align-items:center;gap:.5rem}
+.burl{font-family:var(--f-m);font-size:.5rem;color:rgba(255,255,255,.3);letter-spacing:.04em}
 
-    .hero-image::after {
-      content: '';
-      position: absolute;
-      inset: -1rem;
-      border: 2px solid var(--primary);
-      border-radius: 1.5rem;
-      z-index: -1;
-      opacity: 0.5;
-    }
+/* APP SCREEN */
+.asc{position:relative;aspect-ratio:16/9;overflow:hidden}
+.asb{position:absolute;inset:0}
+.ab-sp{background:linear-gradient(145deg,#0A0E12,#060A0E)}
+.ab-cr{background:linear-gradient(145deg,#050A12,#030810)}
+.ab-au{background:linear-gradient(145deg,#050A0A,#030808)}
+.ab-se{background:linear-gradient(145deg,#08060E,#05040A)}
+.ab-im{background:linear-gradient(145deg,#080A06,#050704)}
+.ab-ca{background:linear-gradient(145deg,#0A0806,#080604)}
 
-    .hero-content h1 {
-      font-size: 3.5rem;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(to right, var(--primary), #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* APP INFO */
+.ai{padding:1.1rem 1.3rem 1.4rem;border-top:1px solid var(--edge)}
+.acat{font-family:var(--f-m);font-size:.49rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.atit{font-size:1.1rem;line-height:1.25;margin-bottom:.35rem}
+.ameta{font-family:var(--f-m);font-size:.47rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:.7rem}
+.astack{display:flex;flex-wrap:wrap;gap:.35rem}
+.ast{font-family:var(--f-m);font-size:.46rem;letter-spacing:.06em;padding:.18rem .5rem;border:1px solid rgba(0,207,207,.18);color:rgba(0,207,207,.6);transition:all .25s}
+.ac:hover .ast{border-color:rgba(0,207,207,.45);color:var(--cyan)}
 
-    .hero-content p {
-      font-size: 1.25rem;
-      color: var(--text-gray);
-      margin-bottom: 2rem;
-    }
+/* ABOUT */
+.abgrid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start}
+.abquote{font-size:clamp(1.2rem,2vw,1.7rem);font-style:italic;line-height:1.65;border-left:2px solid var(--gold);padding-left:1.6rem;margin:2rem 0;color:rgba(240,237,232,.8)}
+.abquote strong{color:var(--gold);font-style:normal}
+.abp{font-size:1rem;line-height:1.85;color:var(--grey);margin-bottom:1.2rem}
+.lgg{margin-top:2.5rem}
+.lgt{font-family:var(--f-m);font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost);margin-bottom:.9rem}
+.lgr{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.lgi{background:var(--surface);border:1px solid var(--edge);padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center;transition:border-color .3s}
+.lgi:hover{border-color:var(--gold)}
+.lgl{font-family:var(--f-m);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.skb{margin-top:.5rem}
+.skr{padding:1.1rem 0;border-bottom:1px solid var(--edge);display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;transition:padding-left .3s}
+.skr:first-child{border-top:1px solid var(--edge)}
+.skr:hover{padding-left:.5rem}
+.skn{font-size:.95rem}
+.skbar{width:120px;height:2px;background:var(--edge)}
+.skfill{height:100%;background:linear-gradient(90deg,var(--gold),#FFD080)}
 
-    /* Section Styles */
-    .section {
-      padding: 6rem 0;
-    }
+/* CONTACT */
+#contact{background:var(--surface);text-align:center;padding:9rem 6vw;position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(232,160,32,.05),transparent 70%);pointer-events:none}
+.ctpre{font-family:var(--f-m);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.cttit{font-family:var(--f-d);font-size:clamp(4rem,10vw,10rem);line-height:.9;letter-spacing:-.02em;position:relative;z-index:2;margin:.8rem 0 1.5rem}
+.cttit em{font-style:italic;color:var(--gold)}
+.ctsub{font-size:1.1rem;color:var(--grey);max-width:440px;margin:0 auto 3rem;line-height:1.7;position:relative;z-index:2}
+.ctbtns{display:flex;gap:1.2rem;justify-content:center;position:relative;z-index:2}
+.btn{font-family:var(--f-m);font-size:.65rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;padding:.9rem 2.6rem;transition:all .3s}
+.btn.s{background:var(--gold);color:var(--bg)}.btn.s:hover{background:var(--white);transform:translateY(-2px)}
+.btn.o{border:1px solid var(--edge);color:var(--ghost)}.btn.o:hover{border-color:var(--gold);color:var(--gold)}
+.ctrow{margin-top:4rem;display:flex;justify-content:center;gap:3.5rem;position:relative;z-index:2}
+.ctit2{display:flex;flex-direction:column;gap:.3rem;align-items:center}
+.ctlab{font-family:var(--f-m);font-size:.51rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
+.ctval{font-family:var(--f-m);font-size:.7rem;transition:color .3s}
+.ctit2:hover .ctval{color:var(--gold)}
 
-    .section-title {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 3rem;
-      text-align: center;
-    }
+/* FOOTER */
+footer{background:var(--ink);padding:1.5rem 6vw;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)}
+.fl{font-family:var(--f-m);font-size:.54rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ghost)}.fl span{color:var(--gold)}
+.fr{font-family:var(--f-m);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ghost)}
 
-    /* Experience Cards */
-    .experience-card {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
-      transition: var(--transition);
-    }
-
-    .experience-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .experience-card h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-    }
-
-    .experience-card .period {
-      color: var(--text-gray);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .experience-card ul {
-      list-style-type: none;
-    }
-
-    .experience-card li {
-      margin-bottom: 0.5rem;
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    .experience-card li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .skill-card {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 1rem;
-      transition: var(--transition);
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .skill-card h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .skill-card ul {
-      list-style-type: none;
-    }
-
-    .skill-card li {
-      margin-bottom: 0.5rem;
-    }
-
-    /* Project Cards */
-    .project-card {
-      background: var(--bg-card);
-      border-radius: 1rem;
-      margin-bottom: 2rem;
-      transition: var(--transition);
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-content {
-      padding: 2rem;
-    }
-
-    .project-content h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 1rem 0;
-    }
-
-    .tech-tag {
-      background: rgba(52, 211, 153, 0.1);
-      color: var(--primary);
-      padding: 0.25rem 0.75rem;
-      border-radius: 2rem;
-      font-size: 0.875rem;
-    }
-
-    /* Contact Section */
-    .contact-section {
-      text-align: center;
-      padding: 4rem 0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: var(--primary);
-      color: var(--bg-dark);
-      text-decoration: none;
-      border-radius: 0.5rem;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--bg-card);
-      padding: 2rem 0;
-      text-align: center;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(50px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 6rem 0 3rem;
-      }
-
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero-image {
-        order: -1;
-      }
-
-      .hero-image img {
-        width: 300px;
-        height: 300px;
-      }
-
-      /* Hide Desktop Nav and Show Mobile Menu Toggle */
-      nav {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-        
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-image img {
-        width: 250px;
-        height: 250px;
-      }
-
-      .section {
-        padding: 4rem 0;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:1100px){.c7,.c8{grid-column:span 12}.c5,.c4{grid-column:span 6}.agrid{grid-template-columns:1fr 1fr}.abgrid{grid-template-columns:1fr;gap:4rem}.nlinks{display:none}}
+@media(max-width:680px){.c5,.c4{grid-column:span 12}.agrid{grid-template-columns:1fr}.hstats{display:none}.ctbtns{flex-direction:column;align-items:center}.ctrow{flex-direction:column;gap:1.5rem}footer{flex-direction:column;gap:.8rem;text-align:center}.vwh,.wwh{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KTK4N4NX');</script>
-  <!-- End Google Tag Manager -->
 
-  <header>
-    <div class="container header-content">
-      <a href="#" class="logo">AC</a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <!-- Mobile Menu Toggle -->
-      <div class="menu-toggle">
-        <i class="fas fa-bars"></i>
+<div id="dot"></div><div id="ring"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nl">A<span>.</span>Chadli</div>
+  <ul class="nlinks">
+    <li><a href="#video">Video</a></li>
+    <li><a href="#apps">Web Apps</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://tanjai.ma/apply.html" target="_blank" class="nhire">Hire Me →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hblob hb1"></div><div class="hblob hb2"></div>
+  <div class="hgrid"></div><div class="hscan"></div>
+  <div class="htop">
+    <div class="htag">Available for Work</div>
+    <div class="hloc">📍 Tangier, Morocco</div>
+  </div>
+  <div class="hcontent">
+    <p class="hpre">Portfolio — 2024/25</p>
+    <h1 class="hname"><span>Abder</span><span class="ol">rahim</span><br><span>Chadli</span></h1>
+    <div class="hsub">
+      <p class="hrole"><strong>AI Video Creator</strong> &amp; Web Developer.<br>I make e-commerce brands move — ads that stop the scroll<br>and apps that remove the friction.</p>
+      <div class="hstats">
+        <div class="hsi"><div class="n">8+</div><div class="l">Years Building</div></div>
+        <div class="hsi"><div class="n">6</div><div class="l">AI Tools</div></div>
       </div>
     </div>
-      <!-- Mobile Navigation -->
-      <div class="mobile-nav">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-  </header>
+    <div class="hdiv"></div>
+    <div class="hscroll"><div class="hscroll-line"></div><span class="hscroll-t">Scroll to see work</span></div>
+  </div>
+</section>
 
-  <main>
-    <section class="hero container" id="about">
-      <div class="hero-content">
-        <h1>Full Stack Developer</h1>
-        <p>Dedicated full-stack developer with 7+ years of experience specializing in Python, Django, .NET, and modern web technologies. Expert in building scalable applications and automated systems that drive business growth and efficiency.</p>
-        <a href="#contact" class="btn">Get in touch</a>
-      </div>
-      <div class="hero-image">
-        <img src="https://i.imgur.com/TT2M7em.jpeg" alt="Abderrahim Chadli - Full Stack Developer">
-      </div>
-    </section>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ttrack">
+    <span class="ti">AI Video Ads</span><span class="ti">Runway Gen-4</span><span class="ti">Kling 1.6</span><span class="ti">Web Apps</span><span class="ti">Shopify Development</span><span class="ti">Pika 2.0</span><span class="ti">Python Automation</span><span class="ti">E-commerce</span><span class="ti">ElevenLabs</span><span class="ti">Tangier Morocco</span>
+    <span class="ti">AI Video Ads</span><span class="ti">Runway Gen-4</span><span class="ti">Kling 1.6</span><span class="ti">Web Apps</span><span class="ti">Shopify Development</span><span class="ti">Pika 2.0</span><span class="ti">Python Automation</span><span class="ti">E-commerce</span><span class="ti">ElevenLabs</span><span class="ti">Tangier Morocco</span>
+  </div>
+</div>
 
-    <section id="experience" class="section container">
-      <h2 class="section-title">Professional Experience</h2>
-      
-      <div class="experience-card">
-        <h3>Full Stack Developer Freelancer</h3>
-        <div class="period">January 2017 – Present</div>
-        <ul>
-          <li>Developed and deployed 20+ custom web applications using Django, ASP.NET, and modern JavaScript</li>
-          <li>Implemented secure payment processing systems handling $500K+ in transactions</li>
-          <li>Created automated email marketing solutions improving client engagement by 40%</li>
-          <li>Optimized database performance reducing query times by 60%</li>
-          <li>Integrated third-party APIs including Stripe, AWS, and social media platforms</li>
-          <li>Mentored junior developers and provided technical consultation to clients</li>
-        </ul>
-      </div>
-
-      <div class="experience-card">
-        <h3>Director at DIGITAL DIVE LTD</h3>
-        <div class="period">May 2020 – May 2021</div>
-        <ul>
-          <li>Led a team of 5 developers in delivering e-commerce solutions</li>
-          <li>Managed project timelines and client relationships for 10+ major projects</li>
-          <li>Implemented agile methodologies improving project delivery time by 30%</li>
-          <li>Established code review processes and development standards</li>
-          <li>Conducted technical interviews and hired key team members</li>
-        </ul>
-      </div>
-
-      <div class="experience-card">
-        <h3>Mailer Agent at Epower/Econsultansy</h3>
-        <div class="period">October 2015 – December 2016</div>
-        <ul>
-          <li>Developed Python scripts automating email delivery for 100K+ recipients</li>
-          <li>Improved email deliverability rates by 25% through server optimization</li>
-          <li>Created monitoring tools for tracking email campaign performance</li>
-          <li>Implemented anti-spam measures and security protocols</li>
-          <li>Collaborated with marketing team to optimize campaign effectiveness</li>
-        </ul>
-      </div>
-    </section>
-
-<section id="skills" class="section container">
-      <h2 class="section-title">Technical Expertise</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Backend Development</h3>
-          <p>Expert in server-side development with a focus on scalable architectures and API design.</p>
-          <ul>
-            <li>Python (Django, FastAPI, Flask)</li>
-            <li>C# (.NET Core, ASP.NET)</li>
-            <li>RESTful APIs</li>
-            <li>PostgreSQL, SQL Server</li>
-            <li>C++ (Core fundamentals)</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Frontend Development</h3>
-          <p>Proficient in modern frontend technologies and responsive design principles.</p>
-          <ul>
-            <li>HTML5 & CSS3</li>
-            <li>JavaScript & jQuery</li>
-            <li>Bootstrap & Responsive Design</li>
-            <li>SASS/SCSS</li>
-            <li>Modern CSS Frameworks</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Development Tools</h3>
-          <p>Experienced with modern development tools and practices.</p>
-          <ul>
-            <li>Git & Version Control</li>
-            <li>Docker Containers</li>
-            <li>CI/CD Pipelines</li>
-            <li>Agile Methodologies</li>
-            <li>Testing & Debugging</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Database & Storage</h3>
-          <p>Proficient in database design and optimization.</p>
-          <ul>
-            <li>PostgreSQL & MySQL</li>
-            <li>SQL Server</li>
-            <li>Database Optimization</li>
-            <li>Data Modeling</li>
-            <li>Query Performance Tuning</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Testing & Automation</h3>
-          <p>Expert in automated testing and quality assurance.</p>
-          <ul>
-            <li>Selenium WebDriver</li>
-            <li>Unit Testing</li>
-            <li>Integration Testing</li>
-            <li>Test Automation</li>
-            <li>Performance Testing</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Project Management</h3>
-          <p>Experienced in leading teams and managing development projects.</p>
-          <ul>
-            <li>Agile Methodologies</li>
-            <li>Team Leadership</li>
-            <li>Technical Planning</li>
-            <li>Risk Management</li>
-            <li>Stakeholder Communication</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section container">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="project-grid">
-        <article class="project-card">
-          <div class="project-content">
-            <h3>Property Management System</h3>
-            <p>Comprehensive real estate management platform with features for tenant management, maintenance tracking, and financial reporting.</p>
-            <div class="tech-stack">
-              <span class="tech-tag">Django</span>
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">AWS</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Egaokira/property_management" target="_blank" class="btn">View Project</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-content">
-            <h3>Digital Product Download</h3>
-            <p>Shopify application for secure digital product delivery with license key management and automated email delivery system.</p>
-            <div class="tech-stack">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Shopify API</span>
-              <span class="tech-tag">AWS S3</span>
-              <span class="tech-tag">Redis</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Egaokira/DigitalProductDownload" target="_blank" class="btn">View Project</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-content">
-            <h3>Product Copy Manager</h3>
-            <p>An automation tool for product management and content synchronization across platforms.</p>
-            <div class="tech-stack">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Django</span>
-              <span class="tech-tag">Celery</span>
-              <span class="tech-tag">Redis</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Egaokira/copyproducts" target="_blank"  class="btn">View Project</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-content">
-            <h3>IP Blocker</h3>
-            <p>A security solution to manage and block unwanted network traffic with configurable rules for blocking IP addresses.</p>
-            <div class="tech-stack">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">iptables</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Egaokira/ipblocker" target="_blank" class="btn">View Project</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-content">
-            <h3>Gmail Send Auto</h3>
-            <p>Email automation script leveraging the Gmail API for bulk communication and scheduling.</p>
-            <div class="tech-stack">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Gmail API</span>
-              <span class="tech-tag">Google Cloud</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/Egaokira/Gmail-Send-Auto" target="_blank" class="btn">View Project</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-<section id="contact" class="section container">
-  <h2 class="section-title">Let's Work Together</h2>
-  <div class="contact-section">
-    <p>Looking for a developer who can bring your ideas to life? I'm currently available for freelance projects and full-time opportunities.</p>
-    <p>Whether you need a custom web application, automation solution, or technical consultation, I'm here to help.</p>
-    
-    <!-- FormSubmit will send emails to the address specified in the action URL -->
-<form action="https://formsubmit.co/egaokira@gmail.com" method="POST" class="contact-form" style="max-width: 600px; margin: 2rem auto; text-align: left;">
-  <!-- FormSubmit Configuration -->
-  <input type="hidden" name="_subject" value="New Portfolio Contact!">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://egaokira.github.io/portfolio/thank-you.html">
-  <input type="hidden" name="_captcha" value="true">
-
-  <div class="form-group" style="margin-bottom: 1.5rem;">
-    <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--text-light);">Name</label>
-    <input type="text" id="name" name="name" required 
-           style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; 
-                  background: var(--bg-card); border: 1px solid var(--text-gray);
-                  color: var(--text-light); outline: none; transition: var(--transition);"
-           placeholder="Your name">
+<!-- VIDEO WORK -->
+<section class="sec sec-bg" id="video">
+  <div class="vwh reveal">
+    <div>
+      <div class="ey g">01 — AI Video Ads</div>
+      <h2 class="sh g">Scroll-stopping<br><em>video, at scale</em></h2>
+      <p class="sp">UGC ads, brand films, product reveals — made with Runway, Kling, Pika and Sora.</p>
+    </div>
+    <div class="vfs">
+      <button class="vfb on">All</button><button class="vfb">UGC</button>
+      <button class="vfb">Brand Film</button><button class="vfb">Product</button>
+    </div>
   </div>
 
-  <div class="form-group" style="margin-bottom: 1.5rem;">
-    <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--text-light);">Email</label>
-    <input type="email" id="email" name="email" required 
-           style="width: 100%; padding: 0.75rem; border-radius: 0.5rem;
-                  background: var(--bg-card); border: 1px solid var(--text-gray);
-                  color: var(--text-light); outline: none; transition: var(--transition);"
-           placeholder="Your email">
+  <div class="vgrid reveal d1">
+
+    <!-- Featured — Skincare -->
+    <div class="vc c7">
+      <div class="vp">
+        <div class="vs s1"><div class="vb"></div><div class="vb"></div>
+          <div class="vcc"><div class="vci">🧴</div><div class="vcbadge">Skincare · Brand Film</div></div>
+        </div>
+        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">META ADS</div></div><div class="vts">00:30</div></div>
+        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
+        <div class="vbw"><div class="vbg"><div class="vbf p45" style="width:24%"></div></div><div class="vtime">0:07 <span>/ 0:30</span></div></div>
+      </div>
+      <div class="vi"><div class="vcat">Featured · Brand Film + UGC</div><div class="vtit">Morning Ritual — Skincare Launch Campaign</div><div class="vmeta">US Market · Meta Ads · 15s &amp; 30s · Batch of 12</div><div class="vtools"><span class="vtl">Runway Gen-4</span><span class="vtl">Kling 1.6</span><span class="vtl">ElevenLabs</span><span class="vtl">Midjourney</span><span class="vtl">CapCut AI</span></div></div>
+    </div>
+
+    <!-- Fashion UGC -->
+    <div class="vc c5">
+      <div class="vp">
+        <div class="vs s2"><div class="vb"></div><div class="vb"></div>
+          <div class="vcc"><div class="vci">👗</div><div class="vcbadge">Fashion · UGC</div></div>
+        </div>
+        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">TIKTOK</div></div><div class="vts">00:15</div></div>
+        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
+        <div class="vbw"><div class="vbg"><div class="vbf p62" style="width:38%"></div></div><div class="vtime">0:06 <span>/ 0:15</span></div></div>
+      </div>
+      <div class="vi"><div class="vcat">UGC Ad · Fashion</div><div class="vtit">UK Fashion Drop — Native TikTok Series</div><div class="vmeta">UK Market · Organic + Paid · 9:16</div><div class="vtools"><span class="vtl">Kling 1.6</span><span class="vtl">Pika 2.0</span><span class="vtl">ElevenLabs</span></div></div>
+    </div>
+
+    <!-- Beauty -->
+    <div class="vc c4">
+      <div class="vp">
+        <div class="vs s3"><div class="vb"></div><div class="vb"></div>
+          <div class="vcc"><div class="vci">💄</div><div class="vcbadge">Beauty · Reveal</div></div>
+        </div>
+        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">REELS</div></div><div class="vts">00:20</div></div>
+        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
+        <div class="vbw"><div class="vbg"><div class="vbf p28" style="width:10%"></div></div><div class="vtime">0:02 <span>/ 0:20</span></div></div>
+      </div>
+      <div class="vi"><div class="vcat">Product Reveal · Beauty</div><div class="vtit">Luxury Beauty Unboxing × 12 Episodes</div><div class="vmeta">AU Market · Reels + Shorts</div><div class="vtools"><span class="vtl">Pika 2.0</span><span class="vtl">Flux</span><span class="vtl">ElevenLabs</span></div></div>
+    </div>
+
+    <!-- Lifestyle -->
+    <div class="vc c4">
+      <div class="vp">
+        <div class="vs s4"><div class="vb"></div><div class="vb"></div>
+          <div class="vcc"><div class="vci">🏡</div><div class="vcbadge">Home · Lifestyle</div></div>
+        </div>
+        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">META + YT</div></div><div class="vts">00:45</div></div>
+        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
+        <div class="vbw"><div class="vbg"><div class="vbf p78" style="width:55%"></div></div><div class="vtime">0:25 <span>/ 0:45</span></div></div>
+      </div>
+      <div class="vi"><div class="vcat">Lifestyle · Batch</div><div class="vtit">Home Brand — 30 Videos in 72 Hours</div><div class="vmeta">CA Market · All Formats</div><div class="vtools"><span class="vtl">Kling</span><span class="vtl">Runway</span><span class="vtl">CapCut</span></div></div>
+    </div>
+
+    <!-- Tech Hero (bottom feature) -->
+    <div class="vc c8">
+      <div class="vp">
+        <div class="vs s5"><div class="vb"></div><div class="vb"></div>
+          <div class="vcc"><div class="vci">🎧</div><div class="vcbadge">Tech · Brand Film</div></div>
+        </div>
+        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">YT PRE-ROLL</div></div><div class="vts">01:00</div></div>
+        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
+        <div class="vbw"><div class="vbg"><div class="vbf p51" style="width:30%"></div></div><div class="vtime">0:31 <span>/ 1:00</span></div></div>
+      </div>
+      <div class="vi"><div class="vcat">Brand Film · Tech</div><div class="vtit">Audio Brand — Hero Product Film + 6 Ad Cuts</div><div class="vmeta">US + EU Market · YouTube Pre-roll + Display</div><div class="vtools"><span class="vtl">Sora</span><span class="vtl">Runway Gen-4</span><span class="vtl">Pika</span><span class="vtl">ElevenLabs</span></div></div>
+    </div>
+
+    <!-- Shopify ecomm -->
+    <div class="vc c4">
+      <div class="vp">
+        <div class="vs s6"><div class="vb"></div><div class="vb"></div>
+          <div class="vcc"><div class="vci">🛍️</div><div class="vcbadge">Shopify · DTC</div></div>
+        </div>
+        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">SHOPIFY ADS</div></div><div class="vts">00:12</div></div>
+        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
+        <div class="vbw"><div class="vbg"><div class="vbf p35" style="width:8%"></div></div><div class="vtime">0:01 <span>/ 0:12</span></div></div>
+      </div>
+      <div class="vi"><div class="vcat">E-commerce · Shopify</div><div class="vtit">Shopify DTC — Product Demo Loop</div><div class="vmeta">D2C · 3:2, 1:1 &amp; 9:16 · Paid Social + PDP</div><div class="vtools"><span class="vtl">Pika 2.0</span><span class="vtl">Kling</span><span class="vtl">Flux</span></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WEB APPS -->
+<section class="sec sec-ink" id="apps">
+  <div class="wwh reveal">
+    <div>
+      <div class="ey c">02 — Web Apps &amp; Automation</div>
+      <h2 class="sh c">Code that<br><em>removes friction</em></h2>
+      <p class="sp">Shopify apps, automation pipelines, CRM systems — built with Python, Django &amp; JavaScript.</p>
+    </div>
+    <div class="vfs">
+      <button class="vfb on" style="--gc:var(--cyan)">All</button>
+      <button class="vfb">Shopify</button><button class="vfb">Automation</button>
+    </div>
   </div>
 
-  <div class="form-group" style="margin-bottom: 1.5rem;">
-    <label for="message" style="display: block; margin-bottom: 0.5rem; color: var(--text-light);">Message</label>
-    <textarea id="message" name="message" required rows="5" 
-              style="width: 100%; padding: 0.75rem; border-radius: 0.5rem;
-                     background: var(--bg-card); border: 1px solid var(--text-gray);
-                     color: var(--text-light); outline: none; transition: var(--transition);
-                     resize: vertical;"
-              placeholder="Your message"></textarea>
+  <div class="agrid">
+
+    <!-- Shopify Digital Downloads -->
+    <div class="ac reveal d1">
+      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">apps.shopify.com / digital-downloads-manager</span></div></div>
+      <div class="asc">
+        <div class="asb ab-sp"></div>
+        <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;padding:.5rem;gap:.35rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem">
+            <div style="background:rgba(0,207,207,.06);border:1px solid rgba(0,207,207,.15);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.85rem;font-weight:700;color:rgba(0,207,207,.8)">1,284</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Downloads</div></div>
+            <div style="background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.15);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.85rem;font-weight:700;color:rgba(232,160,32,.8)">342</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Files</div></div>
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.85rem;font-weight:700;color:rgba(255,255,255,.55)">$8.2k</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Revenue</div></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;display:flex;align-items:flex-end;gap:2px">
+            <div style="flex:1;height:35%;background:rgba(0,207,207,.25);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:55%;background:rgba(0,207,207,.35);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:45%;background:rgba(0,207,207,.28);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:70%;background:rgba(0,207,207,.42);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:60%;background:rgba(0,207,207,.35);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:85%;background:rgba(0,207,207,.55);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:100%;background:rgba(0,207,207,.65);border-radius:1px 1px 0 0"></div>
+          </div>
+        </div>
+      </div>
+      <div class="ai"><div class="acat">Shopify App</div><div class="atit">Digital Downloads Manager</div><div class="ameta">Secure delivery · License keys · Usage limits</div><div class="astack"><span class="ast">Python</span><span class="ast">Django</span><span class="ast">Shopify API</span><span class="ast">AWS S3</span></div></div>
+    </div>
+
+    <!-- Serial Number Manager -->
+    <div class="ac reveal d2">
+      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">apps.shopify.com / serial-key-manager</span></div></div>
+      <div class="asc">
+        <div class="asb ab-se"></div>
+        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="background:rgba(180,80,255,.06);border:1px solid rgba(180,80,255,.18);border-radius:3px;padding:.4rem .6rem;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--f-m);font-size:.5rem;color:rgba(180,80,255,.75)">KEY-2024-XXXX-XXXX-XXXX</span><span style="font-family:var(--f-m);font-size:.42rem;color:#2ECC71;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3);padding:.12rem .4rem">ACTIVE</span></div>
+          <div style="background:rgba(180,80,255,.06);border:1px solid rgba(180,80,255,.18);border-radius:3px;padding:.4rem .6rem;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--f-m);font-size:.5rem;color:rgba(180,80,255,.75)">KEY-2024-YYYY-YYYY-YYYY</span><span style="font-family:var(--f-m);font-size:.42rem;color:#2ECC71;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3);padding:.12rem .4rem">ACTIVE</span></div>
+          <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem .6rem;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--f-m);font-size:.5rem;color:rgba(255,255,255,.25)">KEY-2024-ZZZZ-ZZZZ-ZZZZ</span><span style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,68,68,.8);background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.3);padding:.12rem .4rem">USED</span></div>
+          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:3px;display:flex;align-items:center;justify-content:space-around;padding:.4rem">
+            <div style="text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(180,80,255,.8)">2,400</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Generated</div></div>
+            <div style="text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:#2ECC71">1,847</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Active</div></div>
+            <div style="text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(255,68,68,.8)">553</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Redeemed</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ai"><div class="acat">Shopify App</div><div class="atit">Serial Number Key Manager</div><div class="ameta">Auto-assign on purchase · CSV import · Redemption tracking</div><div class="astack"><span class="ast">Python</span><span class="ast">Django</span><span class="ast">Shopify API</span><span class="ast">PostgreSQL</span></div></div>
+    </div>
+
+    <!-- Store Importer -->
+    <div class="ac reveal d3">
+      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">apps.shopify.com / store-importer-pro</span></div></div>
+      <div class="asc">
+        <div class="asb ab-im"></div>
+        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="background:rgba(46,204,113,.04);border:1px solid rgba(46,204,113,.15);border-radius:3px;padding:.35rem .6rem;display:flex;align-items:center;gap:.5rem"><div style="width:7px;height:7px;border-radius:50%;background:#2ECC71"></div><span style="font-family:var(--f-m);font-size:.48rem;color:rgba(46,204,113,.75)">Import running — 2,907 / 3,420 products synced</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem">
+            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.45rem"><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.28);margin-bottom:.25rem">SOURCE</div><div style="font-family:var(--f-m);font-size:.6rem;color:rgba(232,160,32,.75)">WooCommerce</div></div>
+            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.45rem"><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.28);margin-bottom:.25rem">DESTINATION</div><div style="font-family:var(--f-m);font-size:.6rem;color:rgba(46,204,113,.75)">Shopify</div></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:3px;padding:.5rem">
+            <div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25);margin-bottom:.4rem">PROGRESS</div>
+            <div style="height:5px;background:rgba(255,255,255,.07);border-radius:3px"><div style="width:85%;height:100%;background:linear-gradient(90deg,#2ECC71,rgba(46,204,113,.5));border-radius:3px"></div></div>
+            <div style="font-family:var(--f-m);font-size:.43rem;color:rgba(46,204,113,.65);margin-top:.35rem">85% complete — est. 2 min remaining</div>
+          </div>
+        </div>
+      </div>
+      <div class="ai"><div class="acat">Shopify App</div><div class="atit">Store Importer Pro</div><div class="ameta">WooCommerce → Shopify · Products, orders, customers</div><div class="astack"><span class="ast">Python</span><span class="ast">Shopify API</span><span class="ast">WooCommerce API</span><span class="ast">Celery</span></div></div>
+    </div>
+
+    <!-- CRM Pipeline -->
+    <div class="ac reveal d1">
+      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">crm.internal / pipeline-dashboard</span></div></div>
+      <div class="asc">
+        <div class="asb ab-cr"></div>
+        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;gap:.35rem">
+          <div style="flex:1;background:rgba(0,207,207,.03);border:1px solid rgba(0,207,207,.1);border-radius:3px;padding:.4rem;display:flex;flex-direction:column;gap:.2rem"><div style="font-family:var(--f-m);font-size:.46rem;color:rgba(0,207,207,.65);margin-bottom:.2rem">LEADS · 12</div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(0,207,207,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(0,207,207,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(0,207,207,.4)"></div></div>
+          <div style="flex:1;background:rgba(232,160,32,.03);border:1px solid rgba(232,160,32,.1);border-radius:3px;padding:.4rem;display:flex;flex-direction:column;gap:.2rem"><div style="font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.65);margin-bottom:.2rem">QUALIFIED · 7</div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(232,160,32,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(232,160,32,.4)"></div></div>
+          <div style="flex:1;background:rgba(46,204,113,.03);border:1px solid rgba(46,204,113,.1);border-radius:3px;padding:.4rem;display:flex;flex-direction:column;gap:.2rem"><div style="font-family:var(--f-m);font-size:.46rem;color:rgba(46,204,113,.65);margin-bottom:.2rem">CLOSED · 4</div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div></div>
+        </div>
+      </div>
+      <div class="ai"><div class="acat">Automation · CRM</div><div class="atit">Sales Pipeline Automation</div><div class="ameta">Lead scoring · Email sequences · Auto follow-up</div><div class="astack"><span class="ast">Python</span><span class="ast">Django</span><span class="ast">Zapier</span><span class="ast">Notion API</span></div></div>
+    </div>
+
+    <!-- Email Flows -->
+    <div class="ac reveal d2">
+      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">flows.internal / email-automation</span></div></div>
+      <div class="asc">
+        <div class="asb ab-au"></div>
+        <div style="position:absolute;inset:0;z-index:2;padding:.55rem;display:flex;flex-direction:column;gap:.35rem">
+          <div style="display:flex;align-items:center;gap:.3rem"><div style="background:rgba(0,207,207,.1);border:1px solid rgba(0,207,207,.28);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(0,207,207,.85);white-space:nowrap">🛒 Purchase</div><div style="flex:1;height:1px;background:rgba(0,207,207,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">📧 Thank You</div><div style="flex:1;height:1px;background:rgba(232,160,32,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">+3d Review</div></div>
+          <div style="display:flex;align-items:center;gap:.3rem"><div style="background:rgba(255,68,68,.07);border:1px solid rgba(255,68,68,.2);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(255,68,68,.75);white-space:nowrap">🛒 Abandoned</div><div style="flex:1;height:1px;background:rgba(255,68,68,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">+1h Remind</div><div style="flex:1;height:1px;background:rgba(232,160,32,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">+24h -10%</div></div>
+          <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.3rem">
+            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(0,207,207,.75)">68%</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Open Rate</div></div>
+            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(232,160,32,.75)">24%</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Click Rate</div></div>
+            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(46,204,113,.75)">$4.2k</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Recovered</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ai"><div class="acat">Automation · E-commerce</div><div class="atit">E-commerce Email Flow System</div><div class="ameta">Abandoned cart · Post-purchase · Win-back sequences</div><div class="astack"><span class="ast">Python</span><span class="ast">Klaviyo API</span><span class="ast">Shopify Webhooks</span></div></div>
+    </div>
+
+    <!-- B2B Dashboard -->
+    <div class="ac reveal d3">
+      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">dashboard.b2b-campaigns / analytics</span></div></div>
+      <div class="asc">
+        <div class="asb ab-ca"></div>
+        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;flex-direction:column;gap:.35rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.3rem">
+            <div style="background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.14);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(232,160,32,.8)">142</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Campaigns</div></div>
+            <div style="background:rgba(0,207,207,.05);border:1px solid rgba(0,207,207,.12);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(0,207,207,.75)">3.8x</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">ROAS</div></div>
+            <div style="background:rgba(46,204,113,.04);border:1px solid rgba(46,204,113,.12);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(46,204,113,.75)">$92k</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Revenue</div></div>
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(255,255,255,.5)">18</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Clients</div></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:3px;padding:.4rem;display:flex;align-items:flex-end;gap:3px">
+            <div style="flex:1;height:35%;background:rgba(232,160,32,.2);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:50%;background:rgba(232,160,32,.28);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:42%;background:rgba(232,160,32,.23);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:65%;background:rgba(232,160,32,.38);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:58%;background:rgba(232,160,32,.33);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:80%;background:rgba(232,160,32,.5);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:72%;background:rgba(0,207,207,.45);border-radius:1px 1px 0 0"></div>
+            <div style="flex:1;height:100%;background:rgba(0,207,207,.65);border-radius:1px 1px 0 0"></div>
+          </div>
+        </div>
+      </div>
+      <div class="ai"><div class="acat">B2B · Campaign Analytics</div><div class="atit">B2B Campaign Dashboard</div><div class="ameta">Multi-client ROAS tracking · Automated reporting</div><div class="astack"><span class="ast">JavaScript</span><span class="ast">Python</span><span class="ast">Meta API</span><span class="ast">Google Ads API</span></div></div>
+    </div>
+
   </div>
+</section>
 
-  <button type="submit" class="btn" style="width: 100%; cursor: pointer;">Send Message</button>
-</form>
-
-
-    <div class="contact-links" style="margin-top: 2rem;">
-      <a href="https://github.com/Egaokira" class="btn" target="_blank" style="margin-left: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary);">GitHub Profile</a>
-      <a href="https://www.linkedin.com/in/abderrahimchadli/" target="_blank" class="btn" style="margin-left: 1rem; background: transparent; border: 2px solid var(--primary); color: var(--primary);">LinkedIn Profile</a>
+<!-- ABOUT -->
+<section class="sec sec-bg" id="about">
+  <div class="abgrid">
+    <div class="reveal">
+      <div class="ey g">03 — About</div>
+      <h2 class="sh g">Two crafts.<br><em>One creator.</em></h2>
+      <blockquote class="abquote">"8 years building digital systems from scratch. Same discipline, pointed at AI video — <strong>I don't just make content, I build the engine around it.</strong>"</blockquote>
+      <p class="abp">Based in Tangier, Morocco. Started as a web developer — Shopify apps, Python automation, CRM pipelines — and built AI video creation on top. The combination is rare: a visual creative who can actually automate the workflow around the video.</p>
+      <p class="abp">I don't need a developer to build the pipeline. I am the developer.</p>
+      <div class="lgg">
+        <div class="lgt">Languages</div>
+        <div class="lgr">
+          <div class="lgi"><span>🇲🇦 Arabic</span><span class="lgl">Native</span></div>
+          <div class="lgi"><span>🇫🇷 French</span><span class="lgl">B2</span></div>
+          <div class="lgi"><span>🇬🇧 English</span><span class="lgl">B2</span></div>
+          <div class="lgi"><span>🇩🇪 German</span><span class="lgl">B1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="skb reveal d2">
+      <div class="ey g" style="margin-bottom:1.8rem">Skills</div>
+      <div class="skr"><span class="skn">AI Video Production</span><div class="skbar"><div class="skfill" style="width:95%"></div></div></div>
+      <div class="skr"><span class="skn">Runway / Kling / Pika</span><div class="skbar"><div class="skfill" style="width:92%"></div></div></div>
+      <div class="skr"><span class="skn">Python / Django</span><div class="skbar"><div class="skfill" style="width:88%"></div></div></div>
+      <div class="skr"><span class="skn">Shopify App Dev</span><div class="skbar"><div class="skfill" style="width:85%"></div></div></div>
+      <div class="skr"><span class="skn">Marketing Automation</span><div class="skbar"><div class="skfill" style="width:82%"></div></div></div>
+      <div class="skr"><span class="skn">Creative Direction</span><div class="skbar"><div class="skfill" style="width:87%"></div></div></div>
+      <div class="skr"><span class="skn">ElevenLabs / Midjourney</span><div class="skbar"><div class="skfill" style="width:89%"></div></div></div>
     </div>
   </div>
 </section>
 
-<style>
-/* Add these styles to your existing CSS */
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
-}
+<!-- CONTACT -->
+<section id="contact">
+  <p class="ctpre reveal">Let's work together</p>
+  <h2 class="cttit reveal d1">Let's<br>Build<br><em>Something.</em></h2>
+  <p class="ctsub reveal d2">Open for freelance projects and full-time roles. Based in Tangier — available globally.</p>
+  <div class="ctbtns reveal d3">
+    <a href="https://tanjai.ma/apply.html" target="_blank" class="btn s">Apply to TanjAI →</a>
+    <a href="mailto:egaokira@gmail.com" class="btn o">Send Email</a>
+  </div>
+  <div class="ctrow reveal d4">
+    <div class="ctit2"><span class="ctlab">Email</span><a href="mailto:egaokira@gmail.com" class="ctval">egaokira@gmail.com</a></div>
+    <div class="ctit2"><span class="ctlab">Phone</span><a href="tel:+212645715793" class="ctval">+212 645 715 793</a></div>
+    <div class="ctit2"><span class="ctlab">Location</span><span class="ctval">Hay Mesnana, Tanger</span></div>
+  </div>
+</section>
 
-.contact-form input:hover,
-.contact-form textarea:hover {
-  border-color: var(--primary);
-}
+<!-- FOOTER -->
+<footer>
+  <div class="fl"><span>Abderrahim Chadli</span> — AI Video &amp; Web Apps — <span>2025</span></div>
+  <div class="fr">Made in Tangier.</div>
+</footer>
 
-.form-group label {
-  font-weight: 500;
-}
-
-.contact-form button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-}
-</style>  </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2024 Abderrahim Chadli. All rights reserved.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-gray);">Full Stack Developer</p>
-    </div>
-  </footer>
-
-  <!-- Google Analytics -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9PLKKR8B5S"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+const dot=document.getElementById('dot'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function a(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
 
-  gtag('config', 'G-9PLKKR8B5S');
-</script>
- <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileNav = document.querySelector('.mobile-nav');
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-    menuToggle.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-    });
+document.querySelectorAll('.vfb').forEach(b=>{b.addEventListener('click',()=>{b.closest('div').querySelectorAll('.vfb').forEach(x=>x.classList.remove('on'));b.classList.add('on')})});
+
+const wo=new IntersectionObserver(es=>{es.forEach(e=>document.body.classList.toggle('cyan-mode',e.isIntersecting))},{threshold:.2});
+wo.observe(document.getElementById('apps'));
 </script>
 </body>
 </html>
