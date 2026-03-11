@@ -3,613 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abderrahim Chadli — AI Video & Web Apps</title>
-<meta name="description" content="AI Video Creator & Web Developer from Tangier, Morocco.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>Abderrahim Chadli</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#060608;--ink:#0E0E12;--surface:#14141A;--edge:#1E1E28;--line:rgba(255,255,255,0.07);--gold:#E8A020;--gold-dim:rgba(232,160,32,0.15);--cyan:#00CFCF;--cyan-dim:rgba(0,207,207,0.12);--white:#F0EDE8;--grey:rgba(240,237,232,0.5);--ghost:rgba(240,237,232,0.15);--f-d:'Bebas Neue',sans-serif;--f-s:'DM Serif Display',serif;--f-m:'IBM Plex Mono',monospace}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--white);font-family:var(--f-s);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:.6}
-::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gold)}
-a{text-decoration:none;color:inherit}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* CURSOR */
-#dot{width:5px;height:5px;border-radius:50%;background:var(--gold);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:background .3s}
-#ring{width:28px;height:28px;border:1px solid rgba(232,160,32,.5);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:border-color .3s}
-body.cyan-mode #dot{background:var(--cyan)}
-body.cyan-mode #ring{border-color:rgba(0,207,207,.5)}
+  body {
+    background: #0a0a0a;
+    color: #e8e5e0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
 
-/* KEYFRAMES */
-@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes drift{0%,100%{transform:translate(0,0)}40%{transform:translate(18px,-14px)}70%{transform:translate(-12px,10px)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes scanH{from{top:-4px}to{top:100vh}}
-@keyframes recblink{0%,100%{opacity:1}40%,60%{opacity:0}}
+  a { color: inherit; text-decoration: none; }
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}.d4{transition-delay:.46s}
+  /* ── layout ── */
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:1.2rem 6vw;display:flex;justify-content:space-between;align-items:center;background:rgba(6,6,8,.88);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
-.nl{font-family:var(--f-m);font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}.nl span{color:var(--gold)}
-.nlinks{display:flex;gap:2.5rem;list-style:none}
-.nlinks a{font-family:var(--f-m);font-size:.57rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ghost);transition:color .3s}
-.nlinks a:hover{color:var(--gold)}
-.nhire{font-family:var(--f-m);font-size:.57rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:.45rem 1.3rem;transition:all .3s}
-.nhire:hover{background:var(--white);transform:translateY(-1px)}
+  /* ── nav ── */
+  nav {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    margin-bottom: 6rem;
+  }
+  .nav-name { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: #c8a96e; }
+  .nav-loc  { font-size: .75rem; color: rgba(232,229,224,.4); }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6vw 8vh;position:relative;overflow:hidden}
-.hblob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
-.hb1{width:700px;height:700px;background:radial-gradient(circle,rgba(232,160,32,.07),transparent 70%);top:-15%;right:-10%;animation:drift 18s ease infinite}
-.hb2{width:500px;height:500px;background:radial-gradient(circle,rgba(0,207,207,.05),transparent 70%);bottom:5%;left:-5%;animation:drift 22s ease infinite reverse}
-.hgrid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 80%)}
-.hscan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(232,160,32,.12),transparent);animation:scanH 10s linear infinite;pointer-events:none}
-.htop{position:absolute;top:0;left:0;right:0;padding:6.5rem 6vw 0;display:flex;justify-content:space-between;align-items:flex-start;z-index:2}
-.htag{font-family:var(--f-m);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.6rem}
-.htag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.6s ease infinite}
-.hloc{font-family:var(--f-m);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ghost)}
-.hcontent{position:relative;z-index:2}
-.hpre{font-family:var(--f-m);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost);margin-bottom:.6rem;animation:up .6s ease .1s both}
-.hname{font-family:var(--f-d);font-size:clamp(5rem,13vw,14rem);line-height:.9;letter-spacing:-.01em;animation:up .7s ease .2s both}
-.hname .ol{-webkit-text-stroke:1.5px var(--gold);color:transparent}
-.hsub{display:flex;align-items:center;gap:3rem;margin-top:2.5rem;animation:up .7s ease .4s both}
-.hrole{font-size:clamp(1rem,2vw,1.5rem);font-style:italic;color:var(--grey);line-height:1.5;max-width:500px}
-.hrole strong{color:var(--white);font-style:normal}
-.hstats{display:flex;gap:3rem;margin-left:auto}
-.hsi .n{font-family:var(--f-d);font-size:2.8rem;line-height:1;color:var(--gold)}
-.hsi .l{font-family:var(--f-m);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ghost)}
-.hdiv{height:1px;background:var(--line);margin:2.5rem 0;animation:up .5s ease .6s both}
-.hscroll{position:relative;z-index:2;display:flex;align-items:center;gap:1rem;animation:up .5s ease .7s both}
-.hscroll-line{width:40px;height:1px;background:var(--gold)}
-.hscroll-t{font-family:var(--f-m);font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost)}
+  /* ── hero ── */
+  .hero { margin-bottom: 7rem; }
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #c8a96e;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(232,229,224,.55);
+    max-width: 480px;
+    line-height: 1.8;
+  }
+  .hero-sub strong { color: #e8e5e0; font-weight: 400; }
+  .hero-tags {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .tag {
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(200,169,110,.25);
+    color: rgba(200,169,110,.7);
+    padding: .3rem .8rem;
+  }
 
-/* TICKER */
-.ticker{overflow:hidden;background:var(--gold);padding:.55rem 0}
-.ttrack{display:flex;width:max-content;animation:marquee 20s linear infinite}
-.ti{font-family:var(--f-m);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);padding:0 2.5rem;white-space:nowrap}
-.ti::after{content:'✦';margin-left:2.5rem}
+  /* ── divider ── */
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,.07);
+    margin: 5rem 0;
+  }
 
-/* SECTION */
-.sec{padding:8rem 6vw}
-.sec-ink{background:var(--ink)}
-.sec-bg{background:var(--bg)}
-.ey{font-family:var(--f-m);font-size:.57rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
-.ey.g{color:var(--gold)}.ey.g::before{content:'';width:22px;height:1px;background:var(--gold)}
-.ey.c{color:var(--cyan)}.ey.c::before{content:'';width:22px;height:1px;background:var(--cyan)}
-.sh{font-family:var(--f-d);font-size:clamp(2.8rem,6vw,6.5rem);line-height:.95;letter-spacing:-.01em}
-.sh.g em{font-style:italic;font-family:var(--f-s);font-size:.75em;color:var(--gold)}
-.sh.c em{font-style:italic;font-family:var(--f-s);font-size:.75em;color:var(--cyan)}
-.sp{font-size:1.05rem;line-height:1.8;color:var(--grey);max-width:520px;margin-top:1.2rem}
+  /* ── section label ── */
+  .sec-label {
+    font-size: .7rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: rgba(200,169,110,.6);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+  }
+  .sec-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
 
-/* VIDEO HEAD */
-.vwh{display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;margin-bottom:3.5rem}
-.vfs{display:flex;gap:.4rem}
-.vfb{font-family:var(--f-m);font-size:.54rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid var(--edge);background:none;color:var(--ghost);cursor:pointer;transition:all .25s}
-.vfb.on,.vfb:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+  /* ── video ── */
+  .video-title {
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: -.01em;
+    margin-bottom: .5rem;
+  }
+  .video-desc {
+    font-size: .85rem;
+    color: rgba(232,229,224,.45);
+    margin-bottom: 1.8rem;
+  }
+  .video-frame {
+    background: #000;
+    border: 1px solid rgba(255,255,255,.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .cinema-bar { height: 12px; background: #000; }
+  .video-frame iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+  }
+  .video-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .vm-item { font-size: .72rem; color: rgba(232,229,224,.35); letter-spacing: .08em; text-transform: uppercase; }
+  .vm-item span { color: rgba(200,169,110,.7); }
 
-/* VIDEO GRID */
-.vgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.2rem}
-.vc{background:var(--ink);border:1px solid var(--edge);overflow:hidden;cursor:pointer;transition:transform .4s ease,border-color .4s,box-shadow .4s;position:relative}
-.vc:hover{transform:translateY(-6px);border-color:rgba(232,160,32,.4);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.c7{grid-column:span 7}.c5{grid-column:span 5}.c4{grid-column:span 4}.c8{grid-column:span 8}
+  /* ── workflow ── */
+  .wf-intro {
+    font-size: 1rem;
+    color: rgba(232,229,224,.6);
+    max-width: 560px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .step { display: flex; gap: 1.8rem; margin-bottom: 2.5rem; align-items: flex-start; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num {
+    font-size: .7rem;
+    font-weight: 500;
+    color: rgba(200,169,110,.5);
+    letter-spacing: .1em;
+    padding-top: .15rem;
+    flex-shrink: 0;
+    width: 1.5rem;
+    text-align: right;
+  }
+  .step-line {
+    width: 1px;
+    background: rgba(200,169,110,.15);
+    flex-shrink: 0;
+    align-self: stretch;
+    margin-top: .5rem;
+  }
+  .step-body {}
+  .step-title { font-size: .95rem; font-weight: 400; margin-bottom: .4rem; }
+  .step-desc { font-size: .85rem; color: rgba(232,229,224,.5); line-height: 1.75; }
+  .step-tools { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .7rem; }
+  .stool {
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.1);
+    color: rgba(232,229,224,.4);
+    padding: .2rem .6rem;
+  }
 
-/* PLAYER */
-.vp{position:relative;overflow:hidden}
-.c7 .vp,.c8 .vp{aspect-ratio:16/8}
-.c5 .vp,.c4 .vp{aspect-ratio:4/3}
+  /* ── gem link ── */
+  .gem-box {
+    border: 1px solid rgba(200,169,110,.2);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    transition: border-color .3s;
+    margin-top: 3rem;
+  }
+  .gem-box:hover { border-color: rgba(200,169,110,.5); }
+  .gem-label { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(200,169,110,.6); margin-bottom: .4rem; }
+  .gem-title { font-size: 1rem; font-weight: 400; }
+  .gem-sub { font-size: .82rem; color: rgba(232,229,224,.4); margin-top: .2rem; }
+  .gem-arrow {
+    font-size: 1.2rem;
+    color: rgba(200,169,110,.5);
+    flex-shrink: 0;
+    transition: transform .3s, color .3s;
+  }
+  .gem-box:hover .gem-arrow { transform: translateX(4px); color: #c8a96e; }
 
-/* SCENE */
-.vs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.vs::before,.vs::after{content:'';position:absolute;left:0;right:0;height:10%;background:#000;z-index:4;pointer-events:none}
-.vs::before{top:0}.vs::after{bottom:0}
-.s1{background:linear-gradient(145deg,#180C00,#0F0800,#1A0E00)}
-.s2{background:linear-gradient(145deg,#00101A,#000C12,#001520)}
-.s3{background:linear-gradient(145deg,#12001C,#0A0010,#180018)}
-.s4{background:linear-gradient(145deg,#001208,#000E05,#001A0A)}
-.s5{background:linear-gradient(145deg,#000A18,#000612,#00081C)}
-.s6{background:linear-gradient(145deg,#10080C,#0C0508,#180A10)}
+  /* ── contact ── */
+  .contact { padding: 4rem 0 6rem; }
+  .contact h2 { font-size: 2rem; font-weight: 300; letter-spacing: -.01em; margin-bottom: 1rem; }
+  .contact h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: #c8a96e; }
+  .contact-links { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; }
+  .clink { font-size: .8rem; letter-spacing: .1em; color: rgba(232,229,224,.45); transition: color .3s; }
+  .clink:hover { color: #c8a96e; }
+  .clink-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(232,229,224,.25); display: block; margin-bottom: .2rem; }
 
-.vb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(45px);animation:drift 10s ease infinite}
-.s1 .vb:nth-child(1){width:200px;height:200px;background:rgba(232,160,32,.22);top:10%;left:30%}
-.s1 .vb:nth-child(2){width:150px;height:150px;background:rgba(255,180,80,.13);bottom:15%;right:20%;animation-delay:-4s}
-.s2 .vb:nth-child(1){width:220px;height:220px;background:rgba(0,207,207,.18);top:5%;right:25%;animation-delay:-2s}
-.s2 .vb:nth-child(2){width:160px;height:160px;background:rgba(232,160,32,.11);bottom:20%;left:20%;animation-delay:-6s}
-.s3 .vb:nth-child(1){width:200px;height:200px;background:rgba(200,80,255,.2);top:20%;left:25%}
-.s3 .vb:nth-child(2){width:130px;height:130px;background:rgba(232,160,32,.13);bottom:10%;right:30%;animation-delay:-3s}
-.s4 .vb:nth-child(1){width:180px;height:180px;background:rgba(46,204,113,.2);top:15%;right:20%;animation-delay:-5s}
-.s4 .vb:nth-child(2){width:150px;height:150px;background:rgba(232,160,32,.11);bottom:15%;left:30%}
-.s5 .vb:nth-child(1){width:200px;height:200px;background:rgba(80,130,255,.2);top:10%;left:20%}
-.s5 .vb:nth-child(2){width:170px;height:170px;background:rgba(0,207,207,.13);bottom:10%;right:25%;animation-delay:-4s}
-.s6 .vb:nth-child(1){width:190px;height:190px;background:rgba(232,80,120,.18);top:15%;right:30%;animation-delay:-2s}
-.s6 .vb:nth-child(2){width:140px;height:140px;background:rgba(232,160,32,.13);bottom:20%;left:20%}
-
-.vcc{position:relative;z-index:5;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
-.vci{font-size:3rem;filter:drop-shadow(0 0 25px rgba(232,160,32,.6));animation:drift 7s ease infinite}
-.c7 .vci,.c8 .vci{font-size:4.5rem}
-.vcbadge{font-family:var(--f-m);font-size:.5rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(232,160,32,.9);background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.3);padding:.25rem .75rem;backdrop-filter:blur(4px)}
-
-/* HUD */
-.vhud{position:absolute;top:.7rem;left:.7rem;right:.7rem;display:flex;justify-content:space-between;align-items:flex-start;z-index:10}
-.vrec{display:flex;align-items:center;gap:.35rem;font-family:var(--f-m);font-size:.47rem;letter-spacing:.12em;color:#FF4040;background:rgba(0,0,0,.65);border:1px solid rgba(255,64,64,.3);padding:.22rem .5rem;backdrop-filter:blur(4px)}
-.vrec::before{content:'';width:5px;height:5px;border-radius:50%;background:#FF4040;animation:recblink 1.2s ease infinite}
-.vplat{font-family:var(--f-m);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12);padding:.22rem .55rem;backdrop-filter:blur(4px)}
-.vts{font-family:var(--f-m);font-size:.46rem;color:rgba(255,255,255,.5);background:rgba(0,0,0,.5);padding:.2rem .48rem}
-
-/* PLAY OVERLAY */
-.vpo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);opacity:0;transition:opacity .35s;z-index:8}
-.vc:hover .vpo{opacity:1}
-.vplay{width:54px;height:54px;border:2px solid rgba(232,160,32,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);transform:scale(.8);transition:transform .3s}
-.vc:hover .vplay{transform:scale(1)}
-.vplay svg{fill:var(--gold);margin-left:4px}
-
-/* PROGRESS */
-.vbw{position:absolute;bottom:2rem;left:.8rem;right:.8rem;z-index:9}
-.vbg{height:2px;background:rgba(255,255,255,.12);margin-bottom:.38rem}
-.vbf{height:100%;background:linear-gradient(90deg,var(--gold),#FFD080);position:relative;transition:none}
-.vc:hover .vbf{transition:width 8s linear}
-.vbf::after{content:'';position:absolute;right:-3px;top:50%;width:7px;height:7px;border-radius:50%;background:#FFD080;transform:translateY(-50%);box-shadow:0 0 6px rgba(232,160,32,.9)}
-.vtime{font-family:var(--f-m);font-size:.46rem;color:rgba(255,255,255,.6)}
-.vtime span{color:rgba(255,255,255,.3)}
-
-/* CARD INFO */
-.vi{padding:1.1rem 1.3rem 1.4rem;border-top:1px solid var(--edge)}
-.vcat{font-family:var(--f-m);font-size:.49rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
-.vtit{font-size:1.1rem;line-height:1.25;margin-bottom:.35rem}
-.c7 .vtit,.c8 .vtit{font-size:1.35rem}
-.vmeta{font-family:var(--f-m);font-size:.47rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:.7rem}
-.vtools{display:flex;flex-wrap:wrap;gap:.35rem}
-.vtl{font-family:var(--f-m);font-size:.46rem;letter-spacing:.06em;padding:.18rem .5rem;border:1px solid rgba(232,160,32,.2);color:rgba(232,160,32,.6);transition:all .25s}
-.vc:hover .vtl{border-color:rgba(232,160,32,.5);color:var(--gold)}
-
-/* target widths on hover */
-.vc:hover .p45{width:45%!important}
-.vc:hover .p62{width:62%!important}
-.vc:hover .p28{width:28%!important}
-.vc:hover .p78{width:78%!important}
-.vc:hover .p51{width:51%!important}
-.vc:hover .p35{width:35%!important}
-
-/* APP SECTION */
-.wwh{display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;margin-bottom:3.5rem}
-.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.ac{background:var(--surface);border:1px solid var(--edge);overflow:hidden;transition:transform .4s,border-color .4s,box-shadow .4s;cursor:pointer;position:relative}
-.ac:hover{transform:translateY(-5px);border-color:rgba(0,207,207,.35);box-shadow:0 18px 55px rgba(0,0,0,.5)}
-.ac::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,207,207,.04),transparent);opacity:0;transition:opacity .4s;pointer-events:none}
-.ac:hover::after{opacity:1}
-
-/* BROWSER CHROME */
-.bch{background:var(--edge);padding:.55rem .8rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--line)}
-.bcd{display:flex;gap:.35rem}
-.bdd{width:8px;height:8px;border-radius:50%}
-.dr{background:#FF5F57}.dy{background:#FEBC2E}.dg{background:#28C840}
-.bbar{flex:1;background:rgba(255,255,255,.06);border-radius:2px;padding:.25rem .7rem;display:flex;align-items:center;gap:.5rem}
-.burl{font-family:var(--f-m);font-size:.5rem;color:rgba(255,255,255,.3);letter-spacing:.04em}
-
-/* APP SCREEN */
-.asc{position:relative;aspect-ratio:16/9;overflow:hidden}
-.asb{position:absolute;inset:0}
-.ab-sp{background:linear-gradient(145deg,#0A0E12,#060A0E)}
-.ab-cr{background:linear-gradient(145deg,#050A12,#030810)}
-.ab-au{background:linear-gradient(145deg,#050A0A,#030808)}
-.ab-se{background:linear-gradient(145deg,#08060E,#05040A)}
-.ab-im{background:linear-gradient(145deg,#080A06,#050704)}
-.ab-ca{background:linear-gradient(145deg,#0A0806,#080604)}
-
-/* APP INFO */
-.ai{padding:1.1rem 1.3rem 1.4rem;border-top:1px solid var(--edge)}
-.acat{font-family:var(--f-m);font-size:.49rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
-.atit{font-size:1.1rem;line-height:1.25;margin-bottom:.35rem}
-.ameta{font-family:var(--f-m);font-size:.47rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-bottom:.7rem}
-.astack{display:flex;flex-wrap:wrap;gap:.35rem}
-.ast{font-family:var(--f-m);font-size:.46rem;letter-spacing:.06em;padding:.18rem .5rem;border:1px solid rgba(0,207,207,.18);color:rgba(0,207,207,.6);transition:all .25s}
-.ac:hover .ast{border-color:rgba(0,207,207,.45);color:var(--cyan)}
-
-/* ABOUT */
-.abgrid{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start}
-.abquote{font-size:clamp(1.2rem,2vw,1.7rem);font-style:italic;line-height:1.65;border-left:2px solid var(--gold);padding-left:1.6rem;margin:2rem 0;color:rgba(240,237,232,.8)}
-.abquote strong{color:var(--gold);font-style:normal}
-.abp{font-size:1rem;line-height:1.85;color:var(--grey);margin-bottom:1.2rem}
-.lgg{margin-top:2.5rem}
-.lgt{font-family:var(--f-m);font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost);margin-bottom:.9rem}
-.lgr{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-.lgi{background:var(--surface);border:1px solid var(--edge);padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center;transition:border-color .3s}
-.lgi:hover{border-color:var(--gold)}
-.lgl{font-family:var(--f-m);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.skb{margin-top:.5rem}
-.skr{padding:1.1rem 0;border-bottom:1px solid var(--edge);display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;transition:padding-left .3s}
-.skr:first-child{border-top:1px solid var(--edge)}
-.skr:hover{padding-left:.5rem}
-.skn{font-size:.95rem}
-.skbar{width:120px;height:2px;background:var(--edge)}
-.skfill{height:100%;background:linear-gradient(90deg,var(--gold),#FFD080)}
-
-/* CONTACT */
-#contact{background:var(--surface);text-align:center;padding:9rem 6vw;position:relative;overflow:hidden}
-#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(232,160,32,.05),transparent 70%);pointer-events:none}
-.ctpre{font-family:var(--f-m);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
-.cttit{font-family:var(--f-d);font-size:clamp(4rem,10vw,10rem);line-height:.9;letter-spacing:-.02em;position:relative;z-index:2;margin:.8rem 0 1.5rem}
-.cttit em{font-style:italic;color:var(--gold)}
-.ctsub{font-size:1.1rem;color:var(--grey);max-width:440px;margin:0 auto 3rem;line-height:1.7;position:relative;z-index:2}
-.ctbtns{display:flex;gap:1.2rem;justify-content:center;position:relative;z-index:2}
-.btn{font-family:var(--f-m);font-size:.65rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;padding:.9rem 2.6rem;transition:all .3s}
-.btn.s{background:var(--gold);color:var(--bg)}.btn.s:hover{background:var(--white);transform:translateY(-2px)}
-.btn.o{border:1px solid var(--edge);color:var(--ghost)}.btn.o:hover{border-color:var(--gold);color:var(--gold)}
-.ctrow{margin-top:4rem;display:flex;justify-content:center;gap:3.5rem;position:relative;z-index:2}
-.ctit2{display:flex;flex-direction:column;gap:.3rem;align-items:center}
-.ctlab{font-family:var(--f-m);font-size:.51rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
-.ctval{font-family:var(--f-m);font-size:.7rem;transition:color .3s}
-.ctit2:hover .ctval{color:var(--gold)}
-
-/* FOOTER */
-footer{background:var(--ink);padding:1.5rem 6vw;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)}
-.fl{font-family:var(--f-m);font-size:.54rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ghost)}.fl span{color:var(--gold)}
-.fr{font-family:var(--f-m);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ghost)}
-
-/* RESPONSIVE */
-@media(max-width:1100px){.c7,.c8{grid-column:span 12}.c5,.c4{grid-column:span 6}.agrid{grid-template-columns:1fr 1fr}.abgrid{grid-template-columns:1fr;gap:4rem}.nlinks{display:none}}
-@media(max-width:680px){.c5,.c4{grid-column:span 12}.agrid{grid-template-columns:1fr}.hstats{display:none}.ctbtns{flex-direction:column;align-items:center}.ctrow{flex-direction:column;gap:1.5rem}footer{flex-direction:column;gap:.8rem;text-align:center}.vwh,.wwh{grid-template-columns:1fr}}
+  /* ── footer ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .f-l { font-size: .7rem; color: rgba(232,229,224,.25); letter-spacing: .1em; }
+  .f-r { font-size: .7rem; color: rgba(200,169,110,.4); }
 </style>
 </head>
 <body>
 
-<div id="dot"></div><div id="ring"></div>
+<div class="wrap">
 
-<!-- NAV -->
-<nav>
-  <div class="nl">A<span>.</span>Chadli</div>
-  <ul class="nlinks">
-    <li><a href="#video">Video</a></li>
-    <li><a href="#apps">Web Apps</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="https://tanjai.ma/apply.html" target="_blank" class="nhire">Hire Me →</a>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-name">Abderrahim Chadli</div>
+    <div class="nav-loc">📍 Tangier, Morocco</div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hblob hb1"></div><div class="hblob hb2"></div>
-  <div class="hgrid"></div><div class="hscan"></div>
-  <div class="htop">
-    <div class="htag">Available for Work</div>
-    <div class="hloc">📍 Tangier, Morocco</div>
-  </div>
-  <div class="hcontent">
-    <p class="hpre">Portfolio — 2024/25</p>
-    <h1 class="hname"><span>Abder</span><span class="ol">rahim</span><br><span>Chadli</span></h1>
-    <div class="hsub">
-      <p class="hrole"><strong>AI Video Creator</strong> &amp; Web Developer.<br>I make e-commerce brands move — ads that stop the scroll<br>and apps that remove the friction.</p>
-      <div class="hstats">
-        <div class="hsi"><div class="n">8+</div><div class="l">Years Building</div></div>
-        <div class="hsi"><div class="n">6</div><div class="l">AI Tools</div></div>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>AI Video Creator<br>&amp; <em>Web Developer</em></h1>
+    <p class="hero-sub">
+      I build systems that make content — <strong>character-based AI videos, Shopify apps, and automation pipelines</strong> for e-commerce brands worldwide.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">AI Video</span>
+      <span class="tag">Gemini Systems</span>
+      <span class="tag">Shopify Dev</span>
+      <span class="tag">Python</span>
+      <span class="tag">Available for work</span>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <div class="divider"></div>
+  <section id="video">
+    <div class="sec-label">Video Work</div>
+    <div class="video-title">AI Character Interview — 3D Talking Objects</div>
+    <p class="video-desc">A full video produced solo: scripted, animated, voiced and edited with AI tools. No face, no budget, no crew.</p>
+    <div class="video-frame">
+      <div class="cinema-bar"></div>
+      <iframe
+        src="https://drive.google.com/file/d/1E7b4muZ-9sIL0YhcaYlrvC3z38f82NAA/preview"
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+      <div class="cinema-bar"></div>
+    </div>
+    <div class="video-meta">
+      <div class="vm-item">Format <span>Character Interview</span></div>
+      <div class="vm-item">Language <span>Darija Arabic</span></div>
+      <div class="vm-item">Budget <span>$0</span></div>
+      <div class="vm-item">Time <span>~10 min to produce</span></div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <div class="divider"></div>
+  <section id="workflow">
+    <div class="sec-label">The System</div>
+    <p class="wf-intro">
+      One custom Gemini tool handles 90% of the creative work. The rest is connecting the right AI platforms together. Here's the full workflow:
+    </p>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <div class="step-title">Idea &amp; Script — Gemini AI Director</div>
+        <div class="step-desc">
+          A custom Gemini system prompt acts as the full creative team. It generates 10 viral conflict ideas (organs, objects, habits, food, historical figures), then produces the complete script with Egyptian/Darija Arabic dialogue, over-the-shoulder camera prompts for both characters, and detailed animation instructions for every single scene — strictly 8 seconds per scene. You can also request any topic and scale the dialogue to 30+ minutes.
+        </div>
+        <div class="step-tools">
+          <span class="stool">Gemini 2.0</span>
+          <span class="stool">Custom System Prompt</span>
+          <span class="stool">OTS Camera Protocol</span>
+        </div>
       </div>
     </div>
-    <div class="hdiv"></div>
-    <div class="hscroll"><div class="hscroll-line"></div><span class="hscroll-t">Scroll to see work</span></div>
-  </div>
-</section>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ttrack">
-    <span class="ti">AI Video Ads</span><span class="ti">Runway Gen-4</span><span class="ti">Kling 1.6</span><span class="ti">Web Apps</span><span class="ti">Shopify Development</span><span class="ti">Pika 2.0</span><span class="ti">Python Automation</span><span class="ti">E-commerce</span><span class="ti">ElevenLabs</span><span class="ti">Tangier Morocco</span>
-    <span class="ti">AI Video Ads</span><span class="ti">Runway Gen-4</span><span class="ti">Kling 1.6</span><span class="ti">Web Apps</span><span class="ti">Shopify Development</span><span class="ti">Pika 2.0</span><span class="ti">Python Automation</span><span class="ti">E-commerce</span><span class="ti">ElevenLabs</span><span class="ti">Tangier Morocco</span>
-  </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <div class="step-title">3D Characters &amp; Animation</div>
+        <div class="step-desc">
+          Google Flow (Nano Banana model — zero credits) generates photorealistic Pixar-style characters from the Gemini prompts. To create the shot/reverse-shot conversation effect, ask Gemini to "reverse the camera" and it outputs the opposite OTS prompt. If Flow credits run out, switch to Grok — upload the image, select Animate Image, paste the prompt. Grok also upscales to HD.
+        </div>
+        <div class="step-tools">
+          <span class="stool">Google Flow</span>
+          <span class="stool">Vidu</span>
+          <span class="stool">Grok HD</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <div class="step-title">Voice Consistency — ElevenLabs</div>
+        <div class="step-desc">
+          AI video tools generate inconsistent voices between clips. The fix: export each animated clip to CapCut, extract the audio, upload to ElevenLabs Voice Changer, select Darija Arabic with Multilingual mode, and assign a fixed voice per character. Character A now sounds identical in every scene across the whole video.
+        </div>
+        <div class="step-tools">
+          <span class="stool">ElevenLabs</span>
+          <span class="stool">Voice Changer</span>
+          <span class="stool">Multilingual</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-line"></div>
+      <div class="step-body">
+        <div class="step-title">Final Edit &amp; Watermark Removal — CapCut</div>
+        <div class="step-desc">
+          Sync the ElevenLabs audio, mute the original AI audio. Remove Vidu or Flow watermarks without paying: select all clips → Compound Clip → Crop the bottom strip. The result is a cinematic letterbox look with black bars, or stretch to fill. Export and publish.
+        </div>
+        <div class="step-tools">
+          <span class="stool">CapCut</span>
+          <span class="stool">Compound Clip</span>
+          <span class="stool">Cinematic Crop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GEM LINK -->
+    <a href="https://gemini.google.com/gem/19VbNbz-v7pxAvMhhF9LWt3IpTrKdwUeJ?usp=sharing" target="_blank" class="gem-box">
+      <div>
+        <div class="gem-label">Try the tool</div>
+        <div class="gem-title">Open the Gemini AI Video Director →</div>
+        <div class="gem-sub">The custom Gemini system that powers this entire workflow</div>
+      </div>
+      <div class="gem-arrow">↗</div>
+    </a>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="divider"></div>
+  <section class="contact" id="contact">
+    <h2>Let's build <em>something.</em></h2>
+    <p style="font-size:.9rem;color:rgba(232,229,224,.5);max-width:400px;margin-top:.5rem">
+      Available for freelance projects and full-time roles. Based in Tangier, working with teams globally.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:egaokira@gmail.com" class="clink">
+        <span class="clink-label">Email</span>
+        egaokira@gmail.com
+      </a>
+      <a href="tel:+212645715793" class="clink">
+        <span class="clink-label">Phone</span>
+        +212 645 715 793
+      </a>
+      <a href="https://tanjai.ma/apply.html" target="_blank" class="clink">
+        <span class="clink-label">Applying to</span>
+        TanjAI →
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-l">Abderrahim Chadli · Tangier · 2025</div>
+    <div class="f-r">AI Video · Web Dev</div>
+  </footer>
+
 </div>
-
-<!-- VIDEO WORK -->
-<section class="sec sec-bg" id="video">
-  <div class="vwh reveal">
-    <div>
-      <div class="ey g">01 — AI Video Ads</div>
-      <h2 class="sh g">Scroll-stopping<br><em>video, at scale</em></h2>
-      <p class="sp">UGC ads, brand films, product reveals — made with Runway, Kling, Pika and Sora.</p>
-    </div>
-    <div class="vfs">
-      <button class="vfb on">All</button><button class="vfb">UGC</button>
-      <button class="vfb">Brand Film</button><button class="vfb">Product</button>
-    </div>
-  </div>
-
-  <div class="vgrid reveal d1">
-
-    <!-- Featured — Skincare -->
-    <div class="vc c7">
-      <div class="vp">
-        <div class="vs s1"><div class="vb"></div><div class="vb"></div>
-          <div class="vcc"><div class="vci">🧴</div><div class="vcbadge">Skincare · Brand Film</div></div>
-        </div>
-        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">META ADS</div></div><div class="vts">00:30</div></div>
-        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
-        <div class="vbw"><div class="vbg"><div class="vbf p45" style="width:24%"></div></div><div class="vtime">0:07 <span>/ 0:30</span></div></div>
-      </div>
-      <div class="vi"><div class="vcat">Featured · Brand Film + UGC</div><div class="vtit">Morning Ritual — Skincare Launch Campaign</div><div class="vmeta">US Market · Meta Ads · 15s &amp; 30s · Batch of 12</div><div class="vtools"><span class="vtl">Runway Gen-4</span><span class="vtl">Kling 1.6</span><span class="vtl">ElevenLabs</span><span class="vtl">Midjourney</span><span class="vtl">CapCut AI</span></div></div>
-    </div>
-
-    <!-- Fashion UGC -->
-    <div class="vc c5">
-      <div class="vp">
-        <div class="vs s2"><div class="vb"></div><div class="vb"></div>
-          <div class="vcc"><div class="vci">👗</div><div class="vcbadge">Fashion · UGC</div></div>
-        </div>
-        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">TIKTOK</div></div><div class="vts">00:15</div></div>
-        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
-        <div class="vbw"><div class="vbg"><div class="vbf p62" style="width:38%"></div></div><div class="vtime">0:06 <span>/ 0:15</span></div></div>
-      </div>
-      <div class="vi"><div class="vcat">UGC Ad · Fashion</div><div class="vtit">UK Fashion Drop — Native TikTok Series</div><div class="vmeta">UK Market · Organic + Paid · 9:16</div><div class="vtools"><span class="vtl">Kling 1.6</span><span class="vtl">Pika 2.0</span><span class="vtl">ElevenLabs</span></div></div>
-    </div>
-
-    <!-- Beauty -->
-    <div class="vc c4">
-      <div class="vp">
-        <div class="vs s3"><div class="vb"></div><div class="vb"></div>
-          <div class="vcc"><div class="vci">💄</div><div class="vcbadge">Beauty · Reveal</div></div>
-        </div>
-        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">REELS</div></div><div class="vts">00:20</div></div>
-        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
-        <div class="vbw"><div class="vbg"><div class="vbf p28" style="width:10%"></div></div><div class="vtime">0:02 <span>/ 0:20</span></div></div>
-      </div>
-      <div class="vi"><div class="vcat">Product Reveal · Beauty</div><div class="vtit">Luxury Beauty Unboxing × 12 Episodes</div><div class="vmeta">AU Market · Reels + Shorts</div><div class="vtools"><span class="vtl">Pika 2.0</span><span class="vtl">Flux</span><span class="vtl">ElevenLabs</span></div></div>
-    </div>
-
-    <!-- Lifestyle -->
-    <div class="vc c4">
-      <div class="vp">
-        <div class="vs s4"><div class="vb"></div><div class="vb"></div>
-          <div class="vcc"><div class="vci">🏡</div><div class="vcbadge">Home · Lifestyle</div></div>
-        </div>
-        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">META + YT</div></div><div class="vts">00:45</div></div>
-        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
-        <div class="vbw"><div class="vbg"><div class="vbf p78" style="width:55%"></div></div><div class="vtime">0:25 <span>/ 0:45</span></div></div>
-      </div>
-      <div class="vi"><div class="vcat">Lifestyle · Batch</div><div class="vtit">Home Brand — 30 Videos in 72 Hours</div><div class="vmeta">CA Market · All Formats</div><div class="vtools"><span class="vtl">Kling</span><span class="vtl">Runway</span><span class="vtl">CapCut</span></div></div>
-    </div>
-
-    <!-- Tech Hero (bottom feature) -->
-    <div class="vc c8">
-      <div class="vp">
-        <div class="vs s5"><div class="vb"></div><div class="vb"></div>
-          <div class="vcc"><div class="vci">🎧</div><div class="vcbadge">Tech · Brand Film</div></div>
-        </div>
-        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">YT PRE-ROLL</div></div><div class="vts">01:00</div></div>
-        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
-        <div class="vbw"><div class="vbg"><div class="vbf p51" style="width:30%"></div></div><div class="vtime">0:31 <span>/ 1:00</span></div></div>
-      </div>
-      <div class="vi"><div class="vcat">Brand Film · Tech</div><div class="vtit">Audio Brand — Hero Product Film + 6 Ad Cuts</div><div class="vmeta">US + EU Market · YouTube Pre-roll + Display</div><div class="vtools"><span class="vtl">Sora</span><span class="vtl">Runway Gen-4</span><span class="vtl">Pika</span><span class="vtl">ElevenLabs</span></div></div>
-    </div>
-
-    <!-- Shopify ecomm -->
-    <div class="vc c4">
-      <div class="vp">
-        <div class="vs s6"><div class="vb"></div><div class="vb"></div>
-          <div class="vcc"><div class="vci">🛍️</div><div class="vcbadge">Shopify · DTC</div></div>
-        </div>
-        <div class="vhud"><div style="display:flex;gap:.4rem"><div class="vrec">REC</div><div class="vplat">SHOPIFY ADS</div></div><div class="vts">00:12</div></div>
-        <div class="vpo"><div class="vplay"><svg width="16" height="18" viewBox="0 0 16 18"><path d="M0 0L16 9L0 18V0Z"/></svg></div></div>
-        <div class="vbw"><div class="vbg"><div class="vbf p35" style="width:8%"></div></div><div class="vtime">0:01 <span>/ 0:12</span></div></div>
-      </div>
-      <div class="vi"><div class="vcat">E-commerce · Shopify</div><div class="vtit">Shopify DTC — Product Demo Loop</div><div class="vmeta">D2C · 3:2, 1:1 &amp; 9:16 · Paid Social + PDP</div><div class="vtools"><span class="vtl">Pika 2.0</span><span class="vtl">Kling</span><span class="vtl">Flux</span></div></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- WEB APPS -->
-<section class="sec sec-ink" id="apps">
-  <div class="wwh reveal">
-    <div>
-      <div class="ey c">02 — Web Apps &amp; Automation</div>
-      <h2 class="sh c">Code that<br><em>removes friction</em></h2>
-      <p class="sp">Shopify apps, automation pipelines, CRM systems — built with Python, Django &amp; JavaScript.</p>
-    </div>
-    <div class="vfs">
-      <button class="vfb on" style="--gc:var(--cyan)">All</button>
-      <button class="vfb">Shopify</button><button class="vfb">Automation</button>
-    </div>
-  </div>
-
-  <div class="agrid">
-
-    <!-- Shopify Digital Downloads -->
-    <div class="ac reveal d1">
-      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">apps.shopify.com / digital-downloads-manager</span></div></div>
-      <div class="asc">
-        <div class="asb ab-sp"></div>
-        <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;padding:.5rem;gap:.35rem">
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem">
-            <div style="background:rgba(0,207,207,.06);border:1px solid rgba(0,207,207,.15);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.85rem;font-weight:700;color:rgba(0,207,207,.8)">1,284</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Downloads</div></div>
-            <div style="background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.15);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.85rem;font-weight:700;color:rgba(232,160,32,.8)">342</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Files</div></div>
-            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.85rem;font-weight:700;color:rgba(255,255,255,.55)">$8.2k</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Revenue</div></div>
-          </div>
-          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;display:flex;align-items:flex-end;gap:2px">
-            <div style="flex:1;height:35%;background:rgba(0,207,207,.25);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:55%;background:rgba(0,207,207,.35);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:45%;background:rgba(0,207,207,.28);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:70%;background:rgba(0,207,207,.42);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:60%;background:rgba(0,207,207,.35);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:85%;background:rgba(0,207,207,.55);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:100%;background:rgba(0,207,207,.65);border-radius:1px 1px 0 0"></div>
-          </div>
-        </div>
-      </div>
-      <div class="ai"><div class="acat">Shopify App</div><div class="atit">Digital Downloads Manager</div><div class="ameta">Secure delivery · License keys · Usage limits</div><div class="astack"><span class="ast">Python</span><span class="ast">Django</span><span class="ast">Shopify API</span><span class="ast">AWS S3</span></div></div>
-    </div>
-
-    <!-- Serial Number Manager -->
-    <div class="ac reveal d2">
-      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">apps.shopify.com / serial-key-manager</span></div></div>
-      <div class="asc">
-        <div class="asb ab-se"></div>
-        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;flex-direction:column;gap:.3rem">
-          <div style="background:rgba(180,80,255,.06);border:1px solid rgba(180,80,255,.18);border-radius:3px;padding:.4rem .6rem;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--f-m);font-size:.5rem;color:rgba(180,80,255,.75)">KEY-2024-XXXX-XXXX-XXXX</span><span style="font-family:var(--f-m);font-size:.42rem;color:#2ECC71;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3);padding:.12rem .4rem">ACTIVE</span></div>
-          <div style="background:rgba(180,80,255,.06);border:1px solid rgba(180,80,255,.18);border-radius:3px;padding:.4rem .6rem;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--f-m);font-size:.5rem;color:rgba(180,80,255,.75)">KEY-2024-YYYY-YYYY-YYYY</span><span style="font-family:var(--f-m);font-size:.42rem;color:#2ECC71;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3);padding:.12rem .4rem">ACTIVE</span></div>
-          <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem .6rem;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--f-m);font-size:.5rem;color:rgba(255,255,255,.25)">KEY-2024-ZZZZ-ZZZZ-ZZZZ</span><span style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,68,68,.8);background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.3);padding:.12rem .4rem">USED</span></div>
-          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:3px;display:flex;align-items:center;justify-content:space-around;padding:.4rem">
-            <div style="text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(180,80,255,.8)">2,400</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Generated</div></div>
-            <div style="text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:#2ECC71">1,847</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Active</div></div>
-            <div style="text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(255,68,68,.8)">553</div><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25)">Redeemed</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="ai"><div class="acat">Shopify App</div><div class="atit">Serial Number Key Manager</div><div class="ameta">Auto-assign on purchase · CSV import · Redemption tracking</div><div class="astack"><span class="ast">Python</span><span class="ast">Django</span><span class="ast">Shopify API</span><span class="ast">PostgreSQL</span></div></div>
-    </div>
-
-    <!-- Store Importer -->
-    <div class="ac reveal d3">
-      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">apps.shopify.com / store-importer-pro</span></div></div>
-      <div class="asc">
-        <div class="asb ab-im"></div>
-        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;flex-direction:column;gap:.3rem">
-          <div style="background:rgba(46,204,113,.04);border:1px solid rgba(46,204,113,.15);border-radius:3px;padding:.35rem .6rem;display:flex;align-items:center;gap:.5rem"><div style="width:7px;height:7px;border-radius:50%;background:#2ECC71"></div><span style="font-family:var(--f-m);font-size:.48rem;color:rgba(46,204,113,.75)">Import running — 2,907 / 3,420 products synced</span></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem">
-            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.45rem"><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.28);margin-bottom:.25rem">SOURCE</div><div style="font-family:var(--f-m);font-size:.6rem;color:rgba(232,160,32,.75)">WooCommerce</div></div>
-            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.45rem"><div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.28);margin-bottom:.25rem">DESTINATION</div><div style="font-family:var(--f-m);font-size:.6rem;color:rgba(46,204,113,.75)">Shopify</div></div>
-          </div>
-          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:3px;padding:.5rem">
-            <div style="font-family:var(--f-m);font-size:.42rem;color:rgba(255,255,255,.25);margin-bottom:.4rem">PROGRESS</div>
-            <div style="height:5px;background:rgba(255,255,255,.07);border-radius:3px"><div style="width:85%;height:100%;background:linear-gradient(90deg,#2ECC71,rgba(46,204,113,.5));border-radius:3px"></div></div>
-            <div style="font-family:var(--f-m);font-size:.43rem;color:rgba(46,204,113,.65);margin-top:.35rem">85% complete — est. 2 min remaining</div>
-          </div>
-        </div>
-      </div>
-      <div class="ai"><div class="acat">Shopify App</div><div class="atit">Store Importer Pro</div><div class="ameta">WooCommerce → Shopify · Products, orders, customers</div><div class="astack"><span class="ast">Python</span><span class="ast">Shopify API</span><span class="ast">WooCommerce API</span><span class="ast">Celery</span></div></div>
-    </div>
-
-    <!-- CRM Pipeline -->
-    <div class="ac reveal d1">
-      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">crm.internal / pipeline-dashboard</span></div></div>
-      <div class="asc">
-        <div class="asb ab-cr"></div>
-        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;gap:.35rem">
-          <div style="flex:1;background:rgba(0,207,207,.03);border:1px solid rgba(0,207,207,.1);border-radius:3px;padding:.4rem;display:flex;flex-direction:column;gap:.2rem"><div style="font-family:var(--f-m);font-size:.46rem;color:rgba(0,207,207,.65);margin-bottom:.2rem">LEADS · 12</div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(0,207,207,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(0,207,207,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(0,207,207,.4)"></div></div>
-          <div style="flex:1;background:rgba(232,160,32,.03);border:1px solid rgba(232,160,32,.1);border-radius:3px;padding:.4rem;display:flex;flex-direction:column;gap:.2rem"><div style="font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.65);margin-bottom:.2rem">QUALIFIED · 7</div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(232,160,32,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(232,160,32,.4)"></div></div>
-          <div style="flex:1;background:rgba(46,204,113,.03);border:1px solid rgba(46,204,113,.1);border-radius:3px;padding:.4rem;display:flex;flex-direction:column;gap:.2rem"><div style="font-family:var(--f-m);font-size:.46rem;color:rgba(46,204,113,.65);margin-bottom:.2rem">CLOSED · 4</div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div><div style="height:20px;background:rgba(255,255,255,.04);border-radius:2px;border-left:2px solid rgba(46,204,113,.4)"></div></div>
-        </div>
-      </div>
-      <div class="ai"><div class="acat">Automation · CRM</div><div class="atit">Sales Pipeline Automation</div><div class="ameta">Lead scoring · Email sequences · Auto follow-up</div><div class="astack"><span class="ast">Python</span><span class="ast">Django</span><span class="ast">Zapier</span><span class="ast">Notion API</span></div></div>
-    </div>
-
-    <!-- Email Flows -->
-    <div class="ac reveal d2">
-      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">flows.internal / email-automation</span></div></div>
-      <div class="asc">
-        <div class="asb ab-au"></div>
-        <div style="position:absolute;inset:0;z-index:2;padding:.55rem;display:flex;flex-direction:column;gap:.35rem">
-          <div style="display:flex;align-items:center;gap:.3rem"><div style="background:rgba(0,207,207,.1);border:1px solid rgba(0,207,207,.28);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(0,207,207,.85);white-space:nowrap">🛒 Purchase</div><div style="flex:1;height:1px;background:rgba(0,207,207,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">📧 Thank You</div><div style="flex:1;height:1px;background:rgba(232,160,32,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">+3d Review</div></div>
-          <div style="display:flex;align-items:center;gap:.3rem"><div style="background:rgba(255,68,68,.07);border:1px solid rgba(255,68,68,.2);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(255,68,68,.75);white-space:nowrap">🛒 Abandoned</div><div style="flex:1;height:1px;background:rgba(255,68,68,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">+1h Remind</div><div style="flex:1;height:1px;background:rgba(232,160,32,.2)"></div><div style="background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.22);border-radius:3px;padding:.28rem .5rem;font-family:var(--f-m);font-size:.46rem;color:rgba(232,160,32,.85);white-space:nowrap">+24h -10%</div></div>
-          <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.3rem">
-            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(0,207,207,.75)">68%</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Open Rate</div></div>
-            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(232,160,32,.75)">24%</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Click Rate</div></div>
-            <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:.4rem;text-align:center"><div style="font-family:var(--f-m);font-size:.95rem;font-weight:700;color:rgba(46,204,113,.75)">$4.2k</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Recovered</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="ai"><div class="acat">Automation · E-commerce</div><div class="atit">E-commerce Email Flow System</div><div class="ameta">Abandoned cart · Post-purchase · Win-back sequences</div><div class="astack"><span class="ast">Python</span><span class="ast">Klaviyo API</span><span class="ast">Shopify Webhooks</span></div></div>
-    </div>
-
-    <!-- B2B Dashboard -->
-    <div class="ac reveal d3">
-      <div class="bch"><div class="bcd"><div class="bdd dr"></div><div class="bdd dy"></div><div class="bdd dg"></div></div><div class="bbar"><span class="burl">dashboard.b2b-campaigns / analytics</span></div></div>
-      <div class="asc">
-        <div class="asb ab-ca"></div>
-        <div style="position:absolute;inset:0;z-index:2;padding:.5rem;display:flex;flex-direction:column;gap:.35rem">
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.3rem">
-            <div style="background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.14);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(232,160,32,.8)">142</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Campaigns</div></div>
-            <div style="background:rgba(0,207,207,.05);border:1px solid rgba(0,207,207,.12);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(0,207,207,.75)">3.8x</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">ROAS</div></div>
-            <div style="background:rgba(46,204,113,.04);border:1px solid rgba(46,204,113,.12);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(46,204,113,.75)">$92k</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Revenue</div></div>
-            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:.35rem;text-align:center"><div style="font-family:var(--f-m);font-size:.82rem;font-weight:700;color:rgba(255,255,255,.5)">18</div><div style="font-family:var(--f-m);font-size:.4rem;color:rgba(255,255,255,.25)">Clients</div></div>
-          </div>
-          <div style="flex:1;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:3px;padding:.4rem;display:flex;align-items:flex-end;gap:3px">
-            <div style="flex:1;height:35%;background:rgba(232,160,32,.2);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:50%;background:rgba(232,160,32,.28);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:42%;background:rgba(232,160,32,.23);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:65%;background:rgba(232,160,32,.38);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:58%;background:rgba(232,160,32,.33);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:80%;background:rgba(232,160,32,.5);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:72%;background:rgba(0,207,207,.45);border-radius:1px 1px 0 0"></div>
-            <div style="flex:1;height:100%;background:rgba(0,207,207,.65);border-radius:1px 1px 0 0"></div>
-          </div>
-        </div>
-      </div>
-      <div class="ai"><div class="acat">B2B · Campaign Analytics</div><div class="atit">B2B Campaign Dashboard</div><div class="ameta">Multi-client ROAS tracking · Automated reporting</div><div class="astack"><span class="ast">JavaScript</span><span class="ast">Python</span><span class="ast">Meta API</span><span class="ast">Google Ads API</span></div></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="sec sec-bg" id="about">
-  <div class="abgrid">
-    <div class="reveal">
-      <div class="ey g">03 — About</div>
-      <h2 class="sh g">Two crafts.<br><em>One creator.</em></h2>
-      <blockquote class="abquote">"8 years building digital systems from scratch. Same discipline, pointed at AI video — <strong>I don't just make content, I build the engine around it.</strong>"</blockquote>
-      <p class="abp">Based in Tangier, Morocco. Started as a web developer — Shopify apps, Python automation, CRM pipelines — and built AI video creation on top. The combination is rare: a visual creative who can actually automate the workflow around the video.</p>
-      <p class="abp">I don't need a developer to build the pipeline. I am the developer.</p>
-      <div class="lgg">
-        <div class="lgt">Languages</div>
-        <div class="lgr">
-          <div class="lgi"><span>🇲🇦 Arabic</span><span class="lgl">Native</span></div>
-          <div class="lgi"><span>🇫🇷 French</span><span class="lgl">B2</span></div>
-          <div class="lgi"><span>🇬🇧 English</span><span class="lgl">B2</span></div>
-          <div class="lgi"><span>🇩🇪 German</span><span class="lgl">B1</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="skb reveal d2">
-      <div class="ey g" style="margin-bottom:1.8rem">Skills</div>
-      <div class="skr"><span class="skn">AI Video Production</span><div class="skbar"><div class="skfill" style="width:95%"></div></div></div>
-      <div class="skr"><span class="skn">Runway / Kling / Pika</span><div class="skbar"><div class="skfill" style="width:92%"></div></div></div>
-      <div class="skr"><span class="skn">Python / Django</span><div class="skbar"><div class="skfill" style="width:88%"></div></div></div>
-      <div class="skr"><span class="skn">Shopify App Dev</span><div class="skbar"><div class="skfill" style="width:85%"></div></div></div>
-      <div class="skr"><span class="skn">Marketing Automation</span><div class="skbar"><div class="skfill" style="width:82%"></div></div></div>
-      <div class="skr"><span class="skn">Creative Direction</span><div class="skbar"><div class="skfill" style="width:87%"></div></div></div>
-      <div class="skr"><span class="skn">ElevenLabs / Midjourney</span><div class="skbar"><div class="skfill" style="width:89%"></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <p class="ctpre reveal">Let's work together</p>
-  <h2 class="cttit reveal d1">Let's<br>Build<br><em>Something.</em></h2>
-  <p class="ctsub reveal d2">Open for freelance projects and full-time roles. Based in Tangier — available globally.</p>
-  <div class="ctbtns reveal d3">
-    <a href="https://tanjai.ma/apply.html" target="_blank" class="btn s">Apply to TanjAI →</a>
-    <a href="mailto:egaokira@gmail.com" class="btn o">Send Email</a>
-  </div>
-  <div class="ctrow reveal d4">
-    <div class="ctit2"><span class="ctlab">Email</span><a href="mailto:egaokira@gmail.com" class="ctval">egaokira@gmail.com</a></div>
-    <div class="ctit2"><span class="ctlab">Phone</span><a href="tel:+212645715793" class="ctval">+212 645 715 793</a></div>
-    <div class="ctit2"><span class="ctlab">Location</span><span class="ctval">Hay Mesnana, Tanger</span></div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="fl"><span>Abderrahim Chadli</span> — AI Video &amp; Web Apps — <span>2025</span></div>
-  <div class="fr">Made in Tangier.</div>
-</footer>
-
-<script>
-const dot=document.getElementById('dot'),ring=document.getElementById('ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
-(function a(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
-
-const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-
-document.querySelectorAll('.vfb').forEach(b=>{b.addEventListener('click',()=>{b.closest('div').querySelectorAll('.vfb').forEach(x=>x.classList.remove('on'));b.classList.add('on')})});
-
-const wo=new IntersectionObserver(es=>{es.forEach(e=>document.body.classList.toggle('cyan-mode',e.isIntersecting))},{threshold:.2});
-wo.observe(document.getElementById('apps'));
-</script>
 </body>
 </html>
